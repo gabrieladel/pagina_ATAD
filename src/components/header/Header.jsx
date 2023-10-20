@@ -1,11 +1,21 @@
 import './Header.css'
 import imgLogo from '../../assets/images/logoAtad.jpg'
+import Button from '../Button/Button'
 
 function Header() {
     return (
         <>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quos labore perferendis dolorum dignissimos fugiat aliquam adipisci minus! Voluptatibus fugiat quidem dolore rerum obcaecati vitae soluta alias accusantium atque praesentium!</p>
+        <div className='header_container'>
+        
           <img src={imgLogo} className='header_logo' alt="Logo ATAD" />
+          <div>
+          <Button text='Nosotros'/>
+          <Button text='Eventos'/>
+          <Button text='Proyectos'/>
+          <Button text='Contacto'/>
+          
+          </div>
+          </div>
         </>
     )
 }
