@@ -3,7 +3,7 @@ import './Footer.css';
 function Footer() {
   return (
     <div className='container  my-5'>
-      <footer className='container'>
+      <footer className='container-footer'>
        
           <div className='lista'>
             < ul className='iconos'>
