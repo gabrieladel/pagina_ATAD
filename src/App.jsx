@@ -3,11 +3,7 @@
 // import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './components/header/Header'
-<<<<<<< HEAD
 import ImageCircle from './components/main/ImageCircle'
-=======
-import Footer from './components/header/footer/Footer'
->>>>>>> Monica
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -15,7 +11,6 @@ function App() {
   return (
     <>
       <Header />
-<<<<<<< HEAD
       
       <br />
       <br />
@@ -57,10 +52,6 @@ function App() {
   </section>
 
 </>
-=======
-      <Footer />
-    </>
->>>>>>> Monica
   )
 }
 
