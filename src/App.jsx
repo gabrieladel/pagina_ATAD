@@ -4,7 +4,7 @@
 import './App.css'
 import Header from './components/header/Header'
 import ImageCircle from './components/main/ImageCircle'
-
+import SeccionProyectos from './components/Seccion/SeccionProyectos'
 function App() {
   // const [count, setCount] = useState(0)
 
@@ -33,12 +33,8 @@ function App() {
 
   </section>
 
+  <SeccionProyectos />
   <section id="proyectos">
-    <h2>Proyectos</h2>
-    {/* Contenido de la sección Proyectos */}
-    <p>***************</p>
-    <p>***************</p>
-    <ImageCircle urlImage='https://live.staticflickr.com/8258/8683827826_7345599262_b.jpg' borderColor='red'  />
     
   </section>
 
