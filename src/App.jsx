@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <Header />
-      <Footer />
+     
       <br />
       <br />
       <br />
@@ -51,7 +51,7 @@ function App() {
     <p>***************</p>
     
   </section>
-
+<Footer />
 </>
   )
 }
