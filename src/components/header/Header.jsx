@@ -16,10 +16,10 @@ function Header() {
                     <a className="nav-link" aria-current="page" href="#nosotros">Nosotros</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#eventos">Eventos</a>
+                    <a className="nav-link" href="#proyectos">Proyectos</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#proyectos">Proyectos</a>
+                    <a className="nav-link" href="#eventos">Eventos</a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="#contacto">Contacto</a>
