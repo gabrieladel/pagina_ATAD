@@ -1,7 +1,21 @@
 .actividades{
     display: inline-flex;
 }
+li{
+    list-style: none;
+}
 .imagenesProyectos{
     display: flex;
-    justify-content: center;
+
+   
+   }
+.imagen2Proyectos{
+    position: relative;
+ left: 2px; 
+  top: 50px;
+}
+   
+   .containerseccionProyecto{
+    display: flex;
+    justify-content: space-between;
    }
