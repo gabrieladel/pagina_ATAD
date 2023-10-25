@@ -6,6 +6,8 @@ import Header from './components/header/Header'
 import ImageCircle from './components/main/ImageCircle'
 import Footer from './components/footer/Footer'
 
+import Face from './components/social/Face'
+
 import SeccionProyectos from './components/Seccion/SeccionProyectos'
 function App() {
   // const [count, setCount] = useState(0)
@@ -49,6 +51,7 @@ function App() {
     
   </section>
 <Footer />
+<Face/>
 </>
   )
 }
