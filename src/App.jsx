@@ -28,13 +28,7 @@ function App() {
   </section>
 
   <section id="proyectos">
-  <p>***************</p>
-    <p>***************</p>
-    <h2>Proyectos</h2>
-    {/* Contenido de la sección Proyectos */}
-    <p>***************</p>
-    <p>***************</p>
-    <ImageCircle urlImage='https://live.staticflickr.com/8258/8683827826_7345599262_b.jpg' borderColor='red'  />
+ <SeccionProyectos />
     
   </section>
 <section id="eventos">
