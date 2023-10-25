@@ -5,6 +5,7 @@ import './App.css'
 import Header from './components/header/Header'
 import ImageCircle from './components/main/ImageCircle'
 import Footer from './components/footer/Footer'
+import Atadi from './components/atadi/atadi'
 
 import SeccionProyectos from './components/Seccion/SeccionProyectos'
 function App() {
@@ -39,7 +40,7 @@ function App() {
   <section id="proyectos">
   
   </section>
-
+<Atadi/>
   <section id="contacto">
     <h2>Contacto</h2>
    
