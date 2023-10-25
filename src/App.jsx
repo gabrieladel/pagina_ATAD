@@ -3,6 +3,7 @@
 // import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './components/header/Header'
+import Nosotros from './components/nosotros/Nosotros'
 import ImageCircle from './components/main/ImageCircle'
 
 function App() {
@@ -18,13 +19,15 @@ function App() {
       <br />
       <br />
     <section id="nosotros">
-    <h2>Nosotros</h2>
-    <p>***************</p>
-    <p>***************</p>
+   
+    <Nosotros />
+    
 
   </section>
 
   <section id="proyectos">
+  <p>***************</p>
+    <p>***************</p>
     <h2>Proyectos</h2>
     {/* Contenido de la sección Proyectos */}
     <p>***************</p>
