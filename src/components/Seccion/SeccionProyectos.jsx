@@ -1,5 +1,4 @@
 import './SeccionProyectos.css';
-
 function SeccionProyectos() {
     return (
         <>
@@ -22,8 +21,7 @@ function SeccionProyectos() {
                     <li>Proyecto solidario</li>
                     <li>Proyecto de integracion</li>
                 </ul>
-            </div>
-
+            </div>  
        
         </div>
         </>
