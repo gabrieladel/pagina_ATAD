@@ -1,0 +1,7 @@
+.actividades{
+    display: inline-flex;
+}
+.imagenesProyectos{
+    display: flex;
+    justify-content: center;
+   }
