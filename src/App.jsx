@@ -3,6 +3,7 @@
 // import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './components/header/Header'
+import Nosotros from './components/nosotros/Nosotros'
 import ImageCircle from './components/main/ImageCircle'
 import Footer from './components/footer/Footer'
 
@@ -20,26 +21,31 @@ function App() {
       <br />
       <br />
     <section id="nosotros">
-    <h2>Nosotros</h2>
-    <p>***************</p>
-    <p>***************</p>
+   
+    <Nosotros />
+    
 
   </section>
 
-  <section id="eventos">
+  <section id="proyectos">
+  <p>***************</p>
+    <p>***************</p>
+    <h2>Proyectos</h2>
+    {/* Contenido de la sección Proyectos */}
+    <p>***************</p>
+    <p>***************</p>
+    <ImageCircle urlImage='https://live.staticflickr.com/8258/8683827826_7345599262_b.jpg' borderColor='red'  />
+    
+  </section>
+<section id="eventos">
     <h2>Eventos</h2>
     {/* Contenido de la sección Eventos */}
     <p>***************</p>
     <p>***************</p>
     <ImageCircle urlImage='https://live.staticflickr.com/8258/8683827826_7345599262_b.jpg' borderColor='red'  />
-
+    <p>***************</p>
+    <p>***************</p>
   </section>
-
-  <SeccionProyectos />
-  <section id="proyectos">
-  
-  </section>
-
   <section id="contacto">
     <h2>Contacto</h2>
    
