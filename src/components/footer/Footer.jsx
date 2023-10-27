@@ -2,7 +2,7 @@ import './Footer.css';
 
 function Footer() {
   return (
-    <div className='container  my-5'>
+    <div className='container '>
       <footer className='container-footer'>
        
           <div className='lista'>
