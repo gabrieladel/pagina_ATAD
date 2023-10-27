@@ -5,8 +5,8 @@ import imagen_atdi from '../../assets/images/atdi_img.jpg'
 export default function Nosotros() {
     return (
         <>
-        <div>
-          <div>
+        <div className='conteiner'>
+          <div className='conteiner-text'>
         <h1>ATAD</h1>
            <h3>Asociación Tandilense de Ayuda al Discapacitado </h3>
            <p>Es una institución educativa  privada fundada en 1982, de modalidad especial.
@@ -17,7 +17,7 @@ export default function Nosotros() {
           <li>CFI</li>
          </ul>
          </div>
-         <div>
+         <div className='imagen1'>
         <img src={ imagen } alt="ATAD" width="350" height="270"/> 
         </div>
 <div className="card">

@@ -19,3 +19,9 @@ margin-left: auto;
 li{
     list-style:none;
 }
+.imagen1{
+    display: flex-end;
+    position: relative;
+    left: 30%;
+    top: 20%;
+}
