@@ -1,0 +1,27 @@
+h1{
+    color: #4999FA;
+    font-size: 50px;
+}
+
+.card-title{
+    font-weight: bold;
+    color: #4999FA;
+}
+.card{
+    
+width:360px;
+height:290px;
+display: flex;
+flex-direction:row;
+margin-left: auto;
+}
+
+li{
+    list-style:none;
+}
+.imagen1{
+    display: flex-end;
+    position: relative;
+    left: 30%;
+    top: 20%;
+}
