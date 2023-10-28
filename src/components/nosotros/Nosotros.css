@@ -8,20 +8,29 @@ h1{
     color: #4999FA;
 }
 .card{
-    
-width:360px;
-height:290px;
-display: flex;
-flex-direction:row;
-margin-left: auto;
+    width:360px;
+    height:290px;
+    display: flex;
+    flex-direction:row;
+    margin-left: auto;
 }
 
 li{
     list-style:none;
 }
+.conteiner{
+    display: flex;
+}
+.conteiner-text{
+   margin-left: 10px;
+   right: 10%;
+}
+.conteiner-2{
+    justify-content: baseline;
+}
 .imagen1{
     display: flex-end;
     position: relative;
-    left: 30%;
-    top: 20%;
+    left: 10%;
+    top: 10%;
 }
