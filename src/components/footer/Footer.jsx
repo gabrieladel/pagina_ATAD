@@ -2,7 +2,7 @@ import './Footer.css';
 
 function Footer() {
   return (
-    <div className=''> 
+    <div className='container w-100'> 
 
       <footer className='container-footer bg-light'>
        
