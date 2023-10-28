@@ -1,13 +1,11 @@
+
 .container-footer{
-    background-color: rgb(194, 191, 191);
     display: flex;
     justify-content: center;
 }
 
 
-.ubicacion{
-    background-color: rgba(241, 242, 247, 0.2);
-}
+
 .icons {
     list-style-type: disc;
     margin-block-start: 1em;
