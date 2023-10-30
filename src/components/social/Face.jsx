@@ -4,7 +4,7 @@ export default function Face() {
   return (
     <>
       <div
-        class="fb-page"
+        className="fb-page"
         data-tabs="timeline,events,messages"
         data-href="https://www.facebook.com/profile.php?id=100057622172867"
         data-width="380"
@@ -12,7 +12,7 @@ export default function Face() {
       ></div>
 
       <div
-        class="fb-page"
+        className="fb-page"
         data-href="https://www.facebook.com/profile.php?id=100057622172867"
         data-tabs="timeline, events, messages"
         data-width="380"
@@ -24,7 +24,7 @@ export default function Face() {
       >
         <blockquote
           cite="https://www.facebook.com/profile.php?id=100057622172867"
-          class="fb-xfbml-parse-ignore"
+          className="fb-xfbml-parse-ignore"
         >
           <a href="https://www.facebook.com/profile.php?id=100057622172867">
             Un lugar para Atad
