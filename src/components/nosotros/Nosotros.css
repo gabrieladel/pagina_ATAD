@@ -2,35 +2,42 @@ h1{
     color: #4999FA;
     font-size: 50px;
 }
+ .conteiner{
+    width: 90%;
+	max-width: 1200px;
+	margin: auto;
+    display: grid;
+	grid-template-columns: 2fr 1fr;
+	/* gap: 10px; */
+}
 
+.conteiner-text{
+    justify-content: center;
+ }
 .card-title{
     font-weight: bold;
     color: #4999FA;
 }
 .card{
-    width:360px;
-    height:290px;
+    width:410px;
+    height:250px;
     display: flex;
     flex-direction:row;
     margin-left: auto;
 }
-
-li{
-    list-style:none;
-}
-.conteiner{
-    display: flex;
-}
-.conteiner-text{
-   margin-left: 10px;
-   right: 10%;
-}
-.conteiner-2{
-    justify-content: baseline;
+.log{
+    width: 150px;
+    height: 130px;
+    margin: 40px;
 }
 .imagen1{
-    display: flex-end;
-    position: relative;
-    left: 10%;
-    top: 10%;
+    margin: 20px;
 }
+.conteiner-2{
+    display: flexbox;
+}
+@media only screen and (max-width: 600px) {
+    .mainItems {
+      grid-template-columns: auto;
+    }
+  }
