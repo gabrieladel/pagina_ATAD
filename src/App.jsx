@@ -16,21 +16,14 @@ function App() {
   return (
     <>
       <Header />
-
-      <section id="nosotros">
         <Nosotros />
-      </section>
-
       <section id="proyectos">
         <SeccionProyectos />
       </section>
       <section id="eventos">
         <h2>Eventos</h2>
         {/* Contenido de la sección Eventos */}
-        <p>***************</p>
-        <p>***************</p>
-        <p>***************</p>
-        <p>***************</p>
+        <Face />
       </section>
       <section id="contacto">
         <h2>Contacto</h2>
@@ -40,7 +33,7 @@ function App() {
         <p>***************</p>
       </section>
       <Footer />
-      <Face />
+    
     </>
   );
 }
