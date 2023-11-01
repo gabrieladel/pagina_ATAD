@@ -1,11 +1,11 @@
-import './atadi.css';
+import './Atdi.css';
 
- function Atadi(){
+ function Atdi(){
     return (
         <div className='container  my-5'>
             <section className='container-atadi'> 
-                <div className='atadi-info'>
-                 <h1>ATADI</h1>
+                <div className='Atdi-info'>
+                 <h1>ATDI</h1>
                  <p>
                   Atencion Temprana del Desarrollo Infantil.
                   La institutción recibe bebés a partir de los 45 días de vida y hasta los tres años que tengan algún diagnóstico o derivación 
@@ -21,4 +21,4 @@ import './atadi.css';
         </div>
     )
  }
- export default Atadi
+ export default Atdi
