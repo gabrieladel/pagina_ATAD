@@ -7,14 +7,12 @@ import './Atdi.css';
                 <div className='Atdi-info'>
                  <h1>ATDI</h1>
                  <p>
-                  Atencion Temprana del Desarrollo Infantil.
-                  La institutción recibe bebés a partir de los 45 días de vida y hasta los tres años que tengan algún diagnóstico o derivación 
-                  profesional, o presenten algún riesgo en el desarrollo, por ejemplo,niños prematuros.
-                  En el centro de ATADI comienza una trayectoria educativa que después continúa en el jardín y en la primaria.
-                  Se trabaja con una propuesta educativa de ilusión. Por eso la maestra acompaña esa trayectoria educativa. ¿Qué enseñamos a un
-                  bebé? El trabajo se hace con el niño y la familia. Es un trabajo para enseñar contenidos que son de nivel inicial, primer
-                  ciclo; Se enseña lo vincular, el apego, la comunicación, el lenguaje, el desarrollo motor. La idea es que todo lo que se hace
-                  en la escuela continúe en las casas.
+                   ATDI (Atencion Temprana Del desarrollo Infantil 45 dias a 3 años).
+                 • Propiciar el derecho a la educación desde el momento del nacimiento, la expansión y el impacto del Modelo social de la discapacidad para beneficiar el desarrollo de las infancias.
+                 • Realizar una valoración pedagógica que detecte las necesidades de atención. 
+                 • Planificar acciones integrales que aporten al cuidado, crianza y educación de los bebes, niños y niñas.
+                 • Potenciar el desarrollo de los bebes, niños y niñas, a través de la intervención organizada y personalizada por medio de trayectorias educativas integrales.
+                 • Realizar un trabajo compartido con las familias. 
                  </p>
                 </div>
              </section>
