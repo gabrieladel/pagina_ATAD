@@ -40,4 +40,14 @@ h1{
     .mainItems {
       grid-template-columns: auto;
     }
+    .imagen1{
+        display: none;
+    }
+    .conteiner{
+       display: grid;
+       grid-template-columns: 1fr;
+       gap: 15px;
+
+    }
+
   }
