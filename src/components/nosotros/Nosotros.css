@@ -2,6 +2,9 @@ h1{
     color: #4999FA;
     font-size: 50px;
 }
+section#nosotros{
+    margin-top: 10vh;
+}
  .conteiner{
     width: 90%;
 	max-width: 1200px;
