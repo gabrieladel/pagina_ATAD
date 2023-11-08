@@ -1,5 +1,7 @@
 import "./SeccionProyectos.css";
-import proyecto1 from "../../assets/images/proyecto1.jpg";
+import proyecto1 from '../../assets/images/proyecto1.jpg';
+import proyecto2 from '../../assets/images/proyecto2.jpg';
+import proyecto3 from '../../assets/images/proyecto1.jpg';
 
 function SeccionProyectos() {
   return (
@@ -29,7 +31,7 @@ function SeccionProyectos() {
           </div>
           <div className="col">
             <div className="card h-100">
-              <img src="..." className="card-img-top" alt="..." />
+              <img src={proyecto2} className="card-img-top" alt="..." />
               <div className="card-body">
                 <h5 className="card-title">NIVEL PRIMARIO</h5>
                 <p className="card-text ">PRIMARIA: - FORMACION GENERAL<br>PROPUESTA CURRICULAR COMPLEMENTARIA, DOBLE JORNADA</br></p>
@@ -47,17 +49,16 @@ function SeccionProyectos() {
           </div>
           <div className="col">
             <div className="card h-100">
-              <img src="..." className="card-img-top" alt="..." />
+              <img src={proyecto3} className="card-img-top" alt="..." />
               <div className="card-body">
-                <h5 className="card-title">CFICENTRO DE FORMACION INTEGRAL:<ul><li>FORMACION TECNICA ,DOBLE JORNADA</li>
+                <h5 className="card-title">CFI CENTRO DE FORMACION INTEGRAL:<ul><li>FORMACION TECNICA ,DOBLE JORNADA</li>
                                                                           <li>FORMACION GENERAL, DOBLE JORNADA</li>
                                                                           <li>SERVICIO DEL COMEDOR</li></ul></h5>
                 <p className="card-text "><ul>
                   <li>Posibilitar la propuesta de enseñanza basada en el Diseño Curricular, dirigida a las y los estudiantes, esperando que, a traves de la mediacion  docente, puedan contribuir a la interaccion, conversacion y, fundamentalmente, construccion de conocimientos. </li>
-                  <li>Asegurar el desarrollo de trayectorias educativas en continuidad con el NivelPrimario,tanto en la Modalidad como en las escuelas del Nivel, la progresión y diversidad de la
-enseñanza</li>
-                  <li>Garantizar las trayectorias educativas de adolescentes y jóvenes con discapacidad en unmarco de articulación con los niveles y las modalidades provinciales.
-Brindar una formación que posibilite a las y los estudiantes con discapacidad el desarrollo de sus proyectos de vida.</li>
+                  <li>Asegurar el desarrollo de trayectorias educativas en continuidad con el NivelPrimario,tanto en la Modalidad como en las escuelas del Nivel, la progresión y diversidad de la enseñanza</li>
+                  <li>Garantizar las trayectorias educativas de adolescentes y jóvenes con discapacidad en unmarco de articulación con los niveles y las modalidades provinciales.</li>
+     <li>Brindar una formación que posibilite a las y los estudiantes con discapacidad el desarrollo de sus proyectos de vida.</li>
 <li>Ofrecer espacios de participación juvenil y construcción de ciudadanía.</li>
 <li>Beneficiar la reflexión y la adquisición de herramientas que permitan la mayor autonomía posible</li>
 <li>Ampliar las posibilidades del uso de recursos tecnológicos como beneficiosos para la autonomía y el desarrollo integral.</li>
