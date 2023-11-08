@@ -1,53 +1,76 @@
 import "./SeccionProyectos.css";
-import ImageCircle from "../main/ImageCircle";
+import proyecto1 from "../../assets/images/proyecto1.jpg";
+
 function SeccionProyectos() {
   return (
-    <>
-      <div>
-        <div className="titulo">
-          <h2>NUESTROS PROYECTOS</h2>
-          <p>
-            La institucion educativa ATAD, Asociacion Tandilense de Ayuda al
-            Discapacitado, promueve las siguientes medidas y prácticas en su
-            propuesta de proyectos educativos:
-          </p>
-        </div>
-        <div className="containerseccionProyecto">
-          <div className="actividades">
-            <ul>
-              <li>Acampar</li>
-              <li>Viajes nacionales de estudio</li>
-              <li>Dieta saludable</li>
-              <li>Emprendimiento</li>
-              <li>Feria cultural</li>
-              <li>Dias de convivencia</li>
-              <li>Orientación psicopedagógica</li>
-              <li>Orientación vocacional</li>
-              <li>Proyecto ecológico</li>
-              <li>Proyecto solidario</li>
-              <li>Proyecto de integracion</li>
-            </ul>
-          </div>
-          <div className="imagenesProyectos">
-            <ImageCircle
-              urlImage="https://scontent.fmdq6-1.fna.fbcdn.net/v/t39.30808-6/378556112_747480623849337_405259609514579001_n.jpg?stp=dst-jpg_s552x414&_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHSorK9M7sm27m8Hu7kpvNKImXSLrrbMiMiZdIuutsyIwCC3pV_2Yll2NO4x5MgPqg&_nc_ohc=UJIf51KrG5YAX953pLg&_nc_ht=scontent.fmdq6-1.fna&oh=00_AfCLB8lZeh2Uty0zH8a9rMl4dSw8lyd2aPbA7xfLPZ9_kQ&oe=653CAE18"
-              borderColor="red"
-            />
-            <div className="imagen2Proyectos">
-              <ImageCircle
-                urlImage="https://scontent.fmdq6-1.fna.fbcdn.net/v/t39.30808-6/378534433_747480640516002_7148719400765901053_n.jpg?stp=dst-jpg_s552x414&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEmt8TlClinG8199HnT1A24PKEJ7DW3rao8oQnsNbetqou-nc-3bwcq0dgSkoy9JiA&_nc_ohc=z3aM6pkwWWwAX_iH_lH&_nc_ht=scontent.fmdq6-1.fna&oh=00_AfByzOaGF-7SRwSF3zq0ZUzk2BO9c9gn4UeVixo-cUUvLA&oe=653BB90A"
-                borderColor="blue"
-              />
-            </div>
-            <ImageCircle
-              urlImage="https://scontent.fmdq6-1.fna.fbcdn.net/v/t39.30808-6/378513093_747480637182669_3823426743743443009_n.jpg?stp=dst-jpg_s552x414&_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHjIL0hn5bjzpkKl_PfSUFmA3B8KCNEhz8DcHwoI0SHP2uccTtzzk2k-FHielJWTbk&_nc_ohc=9M5BDrqH6goAX88nNUQ&_nc_ht=scontent.fmdq6-1.fna&oh=00_AfCf3H46UaCeqgtSsWUnxCw2CHHuCQDwLE0SqaNy75HmhA&oe=653C52E1"
-              borderColor="green"
-            />
-          </div>
-        </div>
-      </div>
-    </>
-  );
-}
+  <>
+    <div className="titulo">
+      <h2>PROPUESTAS EDUCATIVAS</h2>
+    </div>
+        <div className="row row-cols-1 row-cols-md-3 g-4">
+          <div className="col">
+            <div className="card h-100">
+              <img src={proyecto1} className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">NIVEL INICIAL</h5>
+                <p className="card-text ">La modalidad de Educación Especial asume actualmente como posicionamiento político-pedagógico la centralidad de la enseñanza, la igualdad como punto de partida, el derecho político a las diferencias y la inclusión educativa como política de Estado”.
+                </p>
+                <ul className="barralateral">
+                  <li>Trabajar de manera corresponsable con las instituciones de nivel. </li>
+                  <li>Propiciar el reconocimiento cultural de las familias que conforman la sala y la institución de modalidad.</li>
+                  <li>Posibilitar el acceso cada vez más autónomo a los aprendizajes.</li>
+                  <li>Favorecer el desarrollo integral de las infancias brindando seguridad y confianza, en un clima de hospitalidad, afecto y comprensión que promueva el avance en todos sus aprendizajes. </li>
+                  <li>Promover y garantizar el derecho a la educación de niñas y niños con discapacidad</li>
+                  <li>Actuar en pos del cuidado integral de niñas y niños .</li>
+                </ul>
+              </div>
 
+            </div>
+          </div>
+          <div className="col">
+            <div className="card h-100">
+              <img src="..." className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">NIVEL PRIMARIO</h5>
+                <p className="card-text ">PRIMARIA: - FORMACION GENERAL<br>PROPUESTA CURRICULAR COMPLEMENTARIA, DOBLE JORNADA</br></p>
+                <ul className="barralateral">
+                  <li>Enriquecer las fortalezas para la construcción de aprendizajes.</li>
+                  <li>Aportar herramientas que permitan a través del diseño curricular del nivel, potenciar el aprendizaje singular de cada alumno/a.</li>
+                  <li>Brindar estrategias comunicativas que permitan construir aprendizajes cada vez más autónomos</li>
+                  <li>Propiciar el conocimiento en las distintas áreas curriculares con las particularidades que posibilita la modalidad</li>
+                  <li>Aportar una mirada trasversal que posibilite el desarrollo integral de cada niño y niña desde una perspectiva de la educación sexual integral.</li>
+                  <li>Ofrecer espacios de conocimiento y reconocimiento de aspectos sociales con su transformación social en el tiempo y el espacio.</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+          <div className="col">
+            <div className="card h-100">
+              <img src="..." className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">CFICENTRO DE FORMACION INTEGRAL:<ul><li>FORMACION TECNICA ,DOBLE JORNADA</li>
+                                                                          <li>FORMACION GENERAL, DOBLE JORNADA</li>
+                                                                          <li>SERVICIO DEL COMEDOR</li></ul></h5>
+                <p className="card-text "><ul>
+                  <li>Posibilitar la propuesta de enseñanza basada en el Diseño Curricular, dirigida a las y los estudiantes, esperando que, a traves de la mediacion  docente, puedan contribuir a la interaccion, conversacion y, fundamentalmente, construccion de conocimientos. </li>
+                  <li>Asegurar el desarrollo de trayectorias educativas en continuidad con el NivelPrimario,tanto en la Modalidad como en las escuelas del Nivel, la progresión y diversidad de la
+enseñanza</li>
+                  <li>Garantizar las trayectorias educativas de adolescentes y jóvenes con discapacidad en unmarco de articulación con los niveles y las modalidades provinciales.
+Brindar una formación que posibilite a las y los estudiantes con discapacidad el desarrollo de sus proyectos de vida.</li>
+<li>Ofrecer espacios de participación juvenil y construcción de ciudadanía.</li>
+<li>Beneficiar la reflexión y la adquisición de herramientas que permitan la mayor autonomía posible</li>
+<li>Ampliar las posibilidades del uso de recursos tecnológicos como beneficiosos para la autonomía y el desarrollo integral.</li>
+</ul></p>
+                                                                        
+              </div>
+
+            </div>
+          </div>
+          </div>
+  </>
+ );
+
+ }
+  
 export default SeccionProyectos;
