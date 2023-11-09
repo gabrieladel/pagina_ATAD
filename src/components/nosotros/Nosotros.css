@@ -3,7 +3,7 @@ h1{
     font-size: 50px;
 }
 section#nosotros{
-    margin-top: 10vh;
+    margin-top: 4vh;
 }
  .conteiner{
     width: 90%;
@@ -11,9 +11,44 @@ section#nosotros{
 	margin: auto;
     display: grid;
 	grid-template-columns: 2fr 1fr;
-	/* gap: 10px; */
+	gap: 10px;
 }
-
+.content-inicial{
+    border-radius: 50%;
+    width: 10% relative;
+    margin: 10px;
+    background: #4999FC;
+    color: aliceblue;
+    font-weight: bold;
+    border: none;
+}
+.content-primaria{
+    border-radius: 50%;
+    width: 10% relative;
+    margin: 10px;
+    background:  #4EFF71;
+    color: aliceblue;
+    font-weight: bold;
+    border: none;
+    position: relative;
+    left: 1px; 
+    top: 20px;
+    
+}
+.imagen2Proyectos{
+    position: relative;
+    left: 2px; 
+    top: 50px;
+}
+.content-cfi{
+    border-radius: 50%;
+    width: 10% relative;
+    margin: 10px;
+    background: #4999FC;
+    color: rgb(240, 243, 255);
+    font-weight: bold;
+    border: none;
+}
 .conteiner-text{
     justify-content: center;
  }
@@ -27,6 +62,7 @@ section#nosotros{
     display: flex;
     flex-direction:row;
     margin-left: auto;
+    color:rgb(8, 8, 8);
 }
 .log{
     width: 150px;
@@ -36,8 +72,9 @@ section#nosotros{
 .imagen1{
     margin: 20px;
 }
-.conteiner-2{
-    display: flexbox;
+
+.card-body{
+    padding: 30px;
 }
 @media only screen and (max-width: 600px) {
     .mainItems {
@@ -50,7 +87,6 @@ section#nosotros{
        display: grid;
        grid-template-columns: 1fr;
        gap: 15px;
-
     }
 
   }
