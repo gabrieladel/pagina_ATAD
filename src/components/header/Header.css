@@ -3,6 +3,9 @@
   height: 4rem;
   margin: 1rem;
 }
+.navbar-toggler{
+  margin-right: 5%;
+}
 
 .nav-link {
   margin: 10px;
