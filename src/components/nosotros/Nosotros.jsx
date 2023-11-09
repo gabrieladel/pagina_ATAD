@@ -15,13 +15,13 @@ export default function Nosotros() {
             <p>ESCUELA DE EDUCACION ESPECIAL DIEGEP N 1963.</p>
             <h6>Abarca los niveles:</h6>
             <div className="niveles">
-            <button className="content-inicial">Inicial</button>
-            <button className="content-primaria">Primario</button>
-            <button className="content-cfi">CFI</button>
+              <button className="content-inicial">Inicial</button>
+              <button className="content-primaria">Primario</button>
+              <button className="content-cfi">CFI</button>
             </div>
-            <a href="#proyectos" className="btn btn-primary btn-sm m-5">
+            {/* <a href="#proyectos" className="btn btn-primary btn-sm m-5">
               Nuestros Proyectos
-            </a>
+            </a> */}
           </div>
           <div className="conteiner-2">
             <div className="imagen1">
@@ -32,8 +32,8 @@ export default function Nosotros() {
                 src={imagen_atdi}
                 alt="ATDI"
                 className="card-img-top rounded-0"
-                /* width="250"
-                height="250" */
+              /* width="250"
+              height="250" */
               />
               <div className="card-body">
                 <h5 className="card-title">ATDI</h5>
