@@ -6,7 +6,7 @@ import Header from "./components/header/Header";
 import Nosotros from "./components/nosotros/Nosotros";
 import ImageCircle from "./components/main/ImageCircle";
 import Footer from "./components/footer/Footer";
-
+import Contacto from "./components/contacto/contacto";
 import Face from "./components/social/Face";
 
 import SeccionProyectos from "./components/Seccion/SeccionProyectos";
@@ -25,13 +25,7 @@ function App() {
         {/* Contenido de la sección Eventos */}
         <Face />
       </section>
-      <section id="contacto">
-        <h2>Contacto</h2>
-
-        {/* Contenido de la sección Contacto */}
-        <p>***************</p>
-        <p>***************</p>
-      </section>
+      <Contacto />
       <Footer />
     
     </>
