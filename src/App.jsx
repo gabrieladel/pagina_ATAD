@@ -27,15 +27,9 @@ function App() {
         {/* Contenido de la sección Eventos */}
         <Face />
       </section>
-      <Contacto />
         <Eventos />
-
       <section id="contacto">
-        <h2>Contacto</h2>
-
-        {/* Contenido de la sección Contacto */}
-        <p>***************</p>
-        <p>***************</p>
+      <Contacto />
       </section>
       <Footer />
     
