@@ -1,5 +1,5 @@
 import "./Footer.css";
-
+import Maps from "../googleMaps/googleMaps";
 function Footer() {
   return (
     <>
@@ -12,14 +12,15 @@ function Footer() {
                <a href="https://www.facebook.com/groups/614288792001824/?ref=share" target="_blanck" title="Whatsapp"><i className="bi bi-whatsapp"></i></a>
                <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=atad1963@gmail.com" target="_blanck" title="Gmail"><i className="bi bi-envelope-at"></i></a>
             </ul>
-
+              {/*  <h4>Encontranos en:</h4> */}
             <div className="ubicacion text-center text-dark p-3 ">
               <i className="bi bi-geo-alt"></i>
-              Encontranos en:
+      
               <a className='text-dark href="#" '>
                 {" "}
                 Cnel. Brandsen 498, Tandil, Provincia de Buenos Aires
               </a>
+              <Maps />
             </div>
           </div>
         </div>
