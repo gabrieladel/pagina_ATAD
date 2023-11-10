@@ -4,7 +4,6 @@
 import "./App.css";
 import Header from "./components/header/Header";
 import Nosotros from "./components/nosotros/Nosotros";
-// import ImageCircle from "./components/main/ImageCircle";
 import Footer from "./components/footer/Footer";
 import Contacto from "./components/contacto/contacto";
 import Face from "./components/social/Face";
