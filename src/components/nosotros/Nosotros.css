@@ -1,92 +1,105 @@
-h1{
+h1 {
     color: #4999FA;
     font-size: 50px;
 }
-section#nosotros{
+
+section#nosotros {
     margin-top: 4vh;
 }
- .conteiner{
+
+.conteiner {
     width: 90%;
-	max-width: 1200px;
-	margin: auto;
+    max-width: 1400px;
     display: grid;
-	grid-template-columns: 2fr 1fr;
-	gap: 10px;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
 }
-.content-inicial{
-    border-radius: 50%;
-    width: 10% relative;
+
+.content-inicial {
+    border-radius: 20%;
+    width: 5em;
     margin: 10px;
     background: #4999FC;
     color: aliceblue;
     font-weight: bold;
     border: none;
 }
-.content-primaria{
-    border-radius: 50%;
-    width: 10% relative;
+
+.content-primaria {
+    border-radius: 20%;
+    width: 5em;
     margin: 10px;
-    background:  #4EFF71;
+    background: #4EFF71;
     color: aliceblue;
     font-weight: bold;
     border: none;
     position: relative;
-    left: 1px; 
+    left: 1px;
     top: 20px;
-    
+
 }
-.imagen2Proyectos{
+
+.imagen2Proyectos {
     position: relative;
-    left: 2px; 
+    left: 2px;
     top: 50px;
 }
-.content-cfi{
-    border-radius: 50%;
-    width: 10% relative;
+
+.content-cfi {
+    border-radius: 20%;
+    width: 5em;
     margin: 10px;
     background: #4999FC;
     color: rgb(240, 243, 255);
     font-weight: bold;
     border: none;
 }
-.conteiner-text{
+
+.conteiner-text {
     justify-content: center;
- }
-.card-title{
+}
+
+.card-title {
     font-weight: bold;
     color: #4999FA;
 }
-.card{
-    width:410px;
-    height:250px;
+
+.card {
+    width: 410px;
+    height: 250px;
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     margin-left: auto;
-    color:rgb(8, 8, 8);
+    color: rgb(8, 8, 8);
 }
-.log{
+
+.log {
     width: 150px;
     height: 130px;
     margin: 40px;
 }
-.imagen1{
+
+.imagen1 {
     margin: 20px;
 }
 
-.card-body{
+.card-body {
     padding: 30px;
 }
+
 @media only screen and (max-width: 600px) {
     .mainItems {
-      grid-template-columns: auto;
-    }
-    .imagen1{
-        display: none;
-    }
-    .conteiner{
-       display: grid;
-       grid-template-columns: 1fr;
-       gap: 15px;
+        grid-template-columns: auto;
     }
 
-  }
+    .imagen1 {
+        display: none;
+    }
+
+    .conteiner {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+}
