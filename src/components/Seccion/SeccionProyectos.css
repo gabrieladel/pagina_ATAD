@@ -4,18 +4,17 @@
 li{
     list-style: none;
 }
-.imagenesProyectos{
-    display: flex;
-
-   
-   }
-.imagen2Proyectos{
-    position: relative;
- left: 2px; 
-  top: 50px;
+.titulo{
+  text-align: center;
 }
    
    .containerseccionProyecto{
     display: flex;
     justify-content: space-between;
    }
+.card1{
+    margin:20px;
+}
+.card2{
+    margin:20px;
+}
