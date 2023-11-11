@@ -6,9 +6,9 @@ import Header from "./components/header/Header";
 import Nosotros from "./components/nosotros/Nosotros";
 import Footer from "./components/footer/Footer";
 import Contacto from "./components/contacto/contacto";
-import Eventos from "./components/eventos/Eventos.jsx";
+import Eventos from "./components/eventos/Eventos";
 
-import Face from "./components/social/Face";
+/* import Face from "./components/social/Face"; */
 
 import SeccionProyectos from "./components/Seccion/SeccionProyectos";
 function App() {
@@ -17,21 +17,20 @@ function App() {
   return (
     <>
       <Header />
-        <Nosotros />
+      <Nosotros />
       <section id="proyectos">
         <SeccionProyectos />
       </section>
       <section id="eventos">
         <h2>Eventos</h2>
         {/* Contenido de la sección Eventos */}
-        <Face />
+        {/*  <Face /> */}
       </section>
-        <Eventos />
+      <Eventos />
       <section id="contacto">
-      <Contacto />
+        <Contacto />
       </section>
       <Footer />
-    
     </>
   );
 }
