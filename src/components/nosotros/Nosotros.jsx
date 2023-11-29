@@ -2,6 +2,7 @@ import "./Nosotros.css";
 import imagen from "../../assets/images/ATAD-In.jpg";
 import imagen_atdi from "../../assets/images/atdi_img.jpg";
 import imgLog from "../../assets/images/logoAtad.jpg";
+import PortalExample from "../Modal/PortalExample";
 
 export default function Nosotros() {
   return (
@@ -40,6 +41,8 @@ export default function Nosotros() {
                 <p className="card-text">
                   Atención temprana del desarrollo infantil (45 dias a 3 años).
                 </p>
+
+                <PortalExample />
                 <a href="#" className="btn btn-primary btn-sm">
                   Para mas info
                 </a>
