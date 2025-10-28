@@ -3,7 +3,7 @@ const router = express.Router();
 const actividades = require("../controllers/actividades.controller");
 
 // Create a new actividad
-router.post("/", actividad.create);
+router.post("/", actividades.create);
 
 // Retrieve all actividades
 router.get("/", actividades.findAll);
@@ -20,7 +20,7 @@ router.put("/:id", actividades.update);
 // Delete a actividad with id
 router.delete("/:id", actividades.delete);
 
-// Delete all actividades
-router.delete("/", actividades.deleteAll);
+/* // Delete all actividades
+router.delete("/", actividades.deleteAll); */
 
 module.exports = router;

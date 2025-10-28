@@ -10,7 +10,7 @@ const Actividad = function(actividad) {
 
 
 Actividad.create = (newActividad, result) => {
-  sql.query("INSERT INTO actividad SET ?", newActividad, (err, res) => {
+  sql.query("INSERT INTO actividades SET ?", newActividad, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -23,7 +23,7 @@ Actividad.create = (newActividad, result) => {
 };
 
 Actividad.findById = (id, result) => {
-  sql.query(`SELECT * FROM actividad WHERE id = ${id}`, (err, res) => {
+  sql.query(`SELECT * FROM actividades WHERE id = ${id}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -42,7 +42,7 @@ Actividad.findById = (id, result) => {
 };
 
 Actividad.getAll = (titulo, result) => {
-  let query = "SELECT * FROM actividad";
+  let query = "SELECT * FROM actividades";
 
   if (titulo) {
     query += ` WHERE titulo LIKE '%${titulo}%'`;
