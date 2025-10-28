@@ -5,6 +5,7 @@ const Noticia = function(noticia) {
   this.titulo = noticia.titulo;
   this.contenido = noticia.contenido;
   this.fecha = noticia.fecha;
+  this.id_usuario = noticia.id_fecha;
 };
 
 

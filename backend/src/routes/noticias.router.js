@@ -20,7 +20,7 @@ router.put("/:id", noticias.update);
 // Delete a noticia with id
 router.delete("/:id", noticias.delete);
 
-// Delete all noticias
-router.delete("/", noticias.deleteAll);
+/* // Delete all noticias
+router.delete("/", noticias.deleteAll); */
 
 module.exports = router;
