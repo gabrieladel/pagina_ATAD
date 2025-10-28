@@ -1,4 +1,4 @@
-const contacto = require("../models/contactos.js");
+const Contacto = require("../models/contactos.js");
 
 // Crear una nueva contacto
 exports.create = (req, res) => {
