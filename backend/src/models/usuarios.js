@@ -10,20 +10,20 @@ const Usuario = function(usuario) {
 
 
 Usuario.create = (newUsuario, result) => {
-  sql.query("INSERT INTO usuario SET ?", newUsuario, (err, res) => {
+  sql.query("INSERT INTO usuarios SET ?", newUsuario, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }
 
-    console.log("created usuario: ", { id: res.insertId, ...newUsuario });
+    console.log("created usuarios: ", { id: res.insertId, ...newUsuario });
     result(null, { id: res.insertId, ...newUsuario });
   });
 };
 
 Usuario.findById = (id, result) => {
-  sql.query(`SELECT * FROM usuario WHERE id = ${id}`, (err, res) => {
+  sql.query(`SELECT * FROM usuarios WHERE id = ${id}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -42,7 +42,7 @@ Usuario.findById = (id, result) => {
 };
 
 Usuario.getAll = (nombre, result) => {
-  let query = "SELECT * FROM usuario";
+  let query = "SELECT * FROM usuarios";
 
   if (nombre) {
     query += ` WHERE nombre LIKE '%${nombre}%'`;
@@ -60,22 +60,9 @@ Usuario.getAll = (nombre, result) => {
   });
 };
 
-Usuario.getAllfecha = result => {
-  sql.query("SELECT * FROM noticias WHERE fecha=true", (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
-
-    console.log("noticias: ", res);
-    result(null, res);
-  });
-};
-
 Usuario.updateById = (id, usuario, result) => {
   sql.query(
-    'UPDATE usuario SET nombre = ?, email = ?, password = ? WHERE id = ?',
+    'UPDATE usuarios SET nombre = ?, email = ?, password = ? WHERE id = ?',
     [usuario.nombre, usuario.email, usuario.password, usuario.id_rol, id],
     (err, res) => {
       if (err) {
@@ -115,7 +102,7 @@ Usuario.remove = (id, result) => {
 };
 
 Usuario.removeAll = (result) => {
-  sql.query('DELETE FROM usuario', (err, res) => {
+  sql.query('DELETE FROM usuarios', (err, res) => {
     if (err) {
       console.log('error: ', err);
       result(err, null);

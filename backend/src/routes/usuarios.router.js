@@ -4,13 +4,10 @@ const usuarios = require("../controllers/usuarios.controller");
 const Usuario = require("../models/usuarios");
 
 // Create a new usuario
-router.post("/", usuario.create);
+router.post("/", usuarios.create);
 
 // Retrieve all usuario
-router.get("/", usuario.findAll);
-
-// Retrieve all fecha usuario
-router.get("/fecha", usuarios.findAllfecha);
+router.get("/", usuarios.findAll);
 
 // Retrieve a single usuario with id
 router.get("/:id", usuarios.findOne);
