@@ -11,6 +11,7 @@ exports.create = (req, res) => {
     titulo: req.body.titulo,
     contenido: req.body.contenido,
     fecha: req.body.fecha || new Date(),
+    id_usuario : req.body.id_usuario,
   };
 
   Noticia.create(newNoticia, (err, data) => {
