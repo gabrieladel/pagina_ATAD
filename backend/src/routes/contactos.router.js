@@ -8,9 +8,6 @@ router.post("/", contactos.create);
 // Retrieve all contactos
 router.get("/", contactos.findAll);
 
-// Retrieve all fecha contactos
-router.get("/fecha", contactos.findAllfecha);
-
 // Retrieve a single contacto with id
 router.get("/:id", contactos.findOne);
 
