@@ -1,0 +1,14 @@
+{
+  "name": "proyecto-atad",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.13.1",
+    "react-bootstrap-icons": "^1.11.6"
+  }
+}
