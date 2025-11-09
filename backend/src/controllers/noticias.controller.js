@@ -1,113 +1,70 @@
+const Noticia = require('../models/noticias');
+const Usuario = require('../models/usuarios');
 
-const Noticia = require("../models/noticias.js");
 
-// Crear una nueva noticia
-exports.create = (req, res) => {
-  if (!req.body) {
-    return res.status(400).send({ message: "El contenido no puede estar vacío." });
+exports.findAll = async (req, res) => {
+  try {
+    const noticias = await Noticia.findAll({
+      include: [
+        {
+          model: Usuario,
+          as: 'usuario',
+          attributes: ['nombre'] 
+        }
+      ]
+    });
+    res.json(noticias);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
-
-  const newNoticia = {
-    titulo: req.body.titulo,
-    contenido: req.body.contenido,
-    fecha: req.body.fecha || new Date(),
-    id_usuario : req.body.id_usuario,
-  };
-
-  Noticia.create(newNoticia, (err, data) => {
-    if (err) {
-      res.status(500).send({
-        message: err.message || "Ocurrió un error al crear la noticia.",
-      });
-    } else {
-      res.send(data);
-    }
-  });
 };
 
-// Obtener todas las noticias
-exports.findAll = (req, res) => {
-  const titulo = req.query.titulo;
-  Noticia.getAll(titulo, (err, data) => {
-    if (err) {
-      res.status(500).send({
-        message: err.message || "Ocurrió un error al obtener las noticias.",
-      });
-    } else {
-      res.send(data);
-    }
-  });
-};
 
-// Obtener todas las noticias con fecha = true
-exports.findAllfecha = (req, res) => {
-  Noticia.getAllfecha((err, data) => {
-    if (err) {
-      res.status(500).send({
-        message: err.message || "Error al obtener noticias por fecha.",
-      });
-    } else {
-      res.send(data);
-    }
-  });
-};
-
-// Obtener una noticia por ID
-exports.findOne = (req, res) => {
-  Noticia.findById(req.params.id, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({ message: `No se encontró la noticia con id ${req.params.id}.` });
-      } else {
-        res.status(500).send({ message: "Error al buscar la noticia con id " + req.params.id });
-      }
-    } else {
-      res.send(data);
-    }
-  });
-};
-
-// Actualizar noticia por ID
-exports.update = (req, res) => {
-  if (!req.body) {
-    return res.status(400).send({ message: "El contenido no puede estar vacío." });
+exports.create = async (req, res) => {
+  try {
+    const noticia = await Noticia.create(req.body);
+    res.json(noticia);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
-
-  Noticia.updateById(req.params.id, req.body, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({ message: `No se encontró la noticia con id ${req.params.id}.` });
-      } else {
-        res.status(500).send({ message: "Error al actualizar la noticia con id " + req.params.id });
-      }
-    } else {
-      res.send(data);
-    }
-  });
 };
 
-// Eliminar una noticia por ID
-exports.delete = (req, res) => {
-  Noticia.remove(req.params.id, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({ message: `No se encontró la noticia con id ${req.params.id}.` });
-      } else {
-        res.status(500).send({ message: "No se pudo eliminar la noticia con id " + req.params.id });
-      }
-    } else {
-      res.send({ message: "Noticia eliminada correctamente." });
-    }
-  });
+
+exports.findOne = async (req, res) => {
+  try {
+    const noticia = await Noticia.findByPk(req.params.id);
+    if (noticia) res.json(noticia);
+    else res.status(404).json({ message: "Noticia no encontrada" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
-// Eliminar todas las noticias
-exports.deleteAll = (req, res) => {
-  Noticia.removeAll((err, data) => {
-    if (err) {
-      res.status(500).send({ message: err.message || "Error al eliminar todas las noticias." });
+
+exports.update = async (req, res) => {
+  try {
+    const [updated] = await Noticia.update(req.body, {
+      where: { id: req.params.id }
+    });
+    if (updated) {
+      const noticiaActualizada = await Noticia.findByPk(req.params.id);
+      res.json(noticiaActualizada);
     } else {
-      res.send({ message: "Todas las noticias fueron eliminadas correctamente." });
+      res.status(404).json({ message: "Noticia no encontrada" });
     }
-  });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.delete = async (req, res) => {
+  try {
+    const deleted = await Noticia.destroy({
+      where: { id: req.params.id }
+    });
+    if (deleted) res.json({ message: "Noticia eliminada correctamente" });
+    else res.status(404).json({ message: "Noticia no encontrada" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };

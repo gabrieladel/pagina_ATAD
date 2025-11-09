@@ -1,112 +1,67 @@
-const Actividad = require("../models/actividades.js");
+const Actividad = require('../models/actividades');
+const Usuario = require('../models/usuarios');
 
-// Crear una nueva actividad
-exports.create = (req, res) => {
-  if (!req.body) {
-    return res.status(400).send({ message: "El contenido no puede estar vacío." });
+
+exports.findAll = async (req, res) => {
+  try {
+    const actividades = await Actividad.findAll({
+      include: [
+        {
+          model: Usuario,
+          as: 'usuario',
+          attributes: ['nombre'] 
+        }
+      ]
+    });
+    res.json(actividades);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
-
-  const newActividad = {
-    titulo: req.body.titulo,
-    descripcion: req.body.descripcion,
-    fecha: req.body.fecha || new Date(),
-    id_usuario : req.body.id_usuario,
-  };
-
-  Actividad.create(newActividad, (err, data) => {
-    if (err) {
-      res.status(500).send({
-        message: err.message || "Ocurrió un error al crear la actividad.",
-      });
-    } else {
-      res.send(data);
-    }
-  });
 };
 
-// Obtener todas las actividades
-exports.findAll = (req, res) => {
-  const titulo = req.query.titulo;
-  Actividad.getAll(titulo, (err, data) => {
-    if (err) {
-      res.status(500).send({
-        message: err.message || "Ocurrió un error al obtener las actividades.",
-      });
-    } else {
-      res.send(data);
-    }
-  });
-};
-
-// Obtener todas las actividades con fecha = true
-exports.findAllfecha = (req, res) => {
-  Actividad.getAllfecha((err, data) => {
-    if (err) {
-      res.status(500).send({
-        message: err.message || "Error al obtener actividades por fecha.",
-      });
-    } else {
-      res.send(data);
-    }
-  });
-};
-
-// Obtener una actividad por ID
-exports.findOne = (req, res) => {
-  Actividad.findById(req.params.id, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({ message: `No se encontró la actividad con id ${req.params.id}.` });
-      } else {
-        res.status(500).send({ message: "Error al buscar la actividad con id " + req.params.id });
-      }
-    } else {
-      res.send(data);
-    }
-  });
-};
-
-// Actualizar actividad por ID
-exports.update = (req, res) => {
-  if (!req.body) {
-    return res.status(400).send({ message: "El contenido no puede estar vacío." });
+exports.create = async (req, res) => {
+  try {
+    const actividad = await Actividad.create(req.body);
+    res.json(actividad);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
-
-  Actividad.updateById(req.params.id, req.body, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({ message: `No se encontró la actividad con id ${req.params.id}.` });
-      } else {
-        res.status(500).send({ message: "Error al actualizar la actividad con id " + req.params.id });
-      }
-    } else {
-      res.send(data);
-    }
-  });
 };
 
-// Eliminar una actividad por ID
-exports.delete = (req, res) => {
-  Actividad.remove(req.params.id, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({ message: `No se encontró la actividad con id ${req.params.id}.` });
-      } else {
-        res.status(500).send({ message: "No se pudo eliminar la actividad con id " + req.params.id });
-      }
-    } else {
-      res.send({ message: "Actividad eliminada correctamente." });
-    }
-  });
+exports.findOne = async (req, res) => {
+  try {
+    const actividad = await Actividad.findByPk(req.params.id);
+    if (actividad) res.json(actividad);
+    else res.status(404).json({ message: "Actividad no encontrada" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
-// Eliminar todas las actividades
-exports.deleteAll = (req, res) => {
-  Actividad.removeAll((err, data) => {
-    if (err) {
-      res.status(500).send({ message: err.message || "Error al eliminar todas las actividades." });
+exports.update = async (req, res) => {
+  try {
+    const [updated] = await Actividad.update(req.body, {
+      where: { id: req.params.id }
+    });
+    if (updated) {
+      const actividadActualizada = await Actividad.findByPk(req.params.id);
+      res.json(actividadActualizada);
     } else {
-      res.send({ message: "Todas las actividades fueron eliminadas correctamente." });
+      res.status(404).json({ message: "Actividad no encontrada" });
     }
-  });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.delete = async (req, res) => {
+  try {
+    const deleted = await Actividad.destroy({
+      where: { id: req.params.id }
+    });
+    if (deleted) res.json({ message: "Actividad eliminada correctamente" });
+    else res.status(404).json({ message: "Actividad no encontrada" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
