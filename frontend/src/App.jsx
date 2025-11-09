@@ -1,38 +1,80 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/header/Header";
 import Nosotros from "./components/nosotros/Nosotros";
 import Footer from "./components/footer/Footer";
 import Contacto from "./components/contacto/contacto";
 import Eventos from "./components/eventos/Eventos";
-
-/* import Face from "./components/social/Face"; */
-
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Dashboard from "./components/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 import SeccionProyectos from "./components/Seccion/SeccionProyectos";
 
-function App() {
-  // const [count, setCount] = useState(0)
+import React from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+
+
+const LandingPageLayout = () => (
+  <>
+    <Header />
+    <Nosotros />
+    <section id="proyectos">
+      <SeccionProyectos />
+    </section>
+    <section id="eventos">
+      <h2>Eventos</h2>
+    </section>
+    <Eventos />
+    <section id="contacto">
+      <Contacto />
+    </section>
+    <Footer />
+  </>
+);
+
+
+function AppContent() {
+  const location = useLocation();
+
+  // Si estoy en alguna de estas rutas NO muestra el Header
+  const hideHeader =
+    location.pathname.startsWith("/login") ||
+    location.pathname.startsWith("/register") ||
+    location.pathname.startsWith("/dashboard");
 
   return (
     <>
-      <Header />
-      <Nosotros />
-      <section id="proyectos">
-        <SeccionProyectos />
-      </section>
-      <section id="eventos">
-        <h2>Eventos</h2>
-        {/* Contenido de la sección Eventos */}
-        {/*  <Face /> */}
-      </section>
-      <Eventos />
-      <section id="contacto">
-        <Contacto />
-      </section>
-      <Footer />
+      {!hideHeader && <Header />}
+
+      <Routes>
+        <Route path="/" element={<LandingPageLayout />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute requireAdmin={true}>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="*" element={<h1>404 - Página no encontrada</h1>} />
+      </Routes>
     </>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
