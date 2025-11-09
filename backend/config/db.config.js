@@ -15,13 +15,13 @@ const sequelize = new Sequelize(
   }
 );
 
-// Test de conexión
+
 (async () => {
   try {
     await sequelize.authenticate();
-    console.log('✅ Conexión exitosa a MySQL con Sequelize');
+    console.log(' Conexión exitosa a MySQL con Sequelize');
   } catch (error) {
-    console.error('❌ Error al conectar con Sequelize:', error);
+    console.error(' Error al conectar con Sequelize:', error);
   }
 })();
 
