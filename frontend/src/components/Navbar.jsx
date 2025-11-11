@@ -22,7 +22,7 @@ const Navbar = () => {
             {!isDashboard && (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link text-dark" to="/">Inicio</Link>
+                  <a className="nav-link text-dark" href="#nosotros">Inicio</a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link text-dark" href="#proyectos">Proyectos</a>
