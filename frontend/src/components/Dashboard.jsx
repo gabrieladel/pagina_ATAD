@@ -3,8 +3,9 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import NoticiasCRUD from './Crud/NoticiasCrud';
 import ActividadesCRUD from './Crud/ActividadesCRUD';
+import ContactosCRUD from './Crud/ContactosCRUD';
 import UsuariosCRUD from './Crud/UsuariosCRUD';
-import MensajesCRUD from './Crud/MensajesCRUD';
+
 
 
 const Dashboard = () => {
@@ -56,8 +57,8 @@ const Dashboard = () => {
                 return <ActividadesCRUD />;
             case 'usuarios':
                 return <UsuariosCRUD />;
-            case 'contacto':
-                return <MensajesCRUD />;
+            case 'contactos':
+                return <ContactosCRUD />;
             default:
                 return (
                     <div style={{ padding: "2rem", textAlign: "center" }}>
