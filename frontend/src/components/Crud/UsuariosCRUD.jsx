@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Modal, Button, Table } from 'react-bootstrap';
 
 const UsuariosCRUD = () => {
   const [usuarios, setNoticias] = useState([]);
-  const [form, setForm] = useState({ 
-    nombre: "", 
-    email: "", 
+  const [form, setForm] = useState({
+    nombre: "",
+    email: "",
     rol: "",
     id_usuario: "",
   });
@@ -30,21 +31,21 @@ const UsuariosCRUD = () => {
   const crear = async () => {
     try {
       await axios.post(API_URL, form);
-      setForm({ nombre: "", email: "", rol: ""});
+      setForm({ nombre: "", email: "", rol: "" });
       fetchUsuarios();
     } catch (error) {
       console.error("Error al crear usuario:", error);
     }
   };
 
- 
+
   const editar = (usuario) => {
     setEditando(usuario.id);
-    setForm({ 
+    setForm({
       nombre: usuario.nombre,
-      email: usuario.email, 
+      email: usuario.email,
       rol: usuario.rol,
-      
+
     });
   };
 
@@ -60,7 +61,7 @@ const UsuariosCRUD = () => {
     }
   };
 
- 
+
   const eliminar = async (id) => {
     if (window.confirm("¿Seguro que querés eliminar esta usuario?")) {
       try {
@@ -72,12 +73,12 @@ const UsuariosCRUD = () => {
     }
   };
 
-  
+
   const ver = (usuario) => {
     setViendo(usuario);
   };
 
-  
+
   const cerrarModal = () => {
     setViendo(null);
   };
@@ -104,16 +105,16 @@ const UsuariosCRUD = () => {
           placeholder="Email"
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
-          style={{ marginRight: "10px", padding: "5px", width: "300px" }}
+          style={{ marginRight: "10px", padding: "5px" }}
         />
- <input
+        <input
           type="text"
           placeholder="Rol"
           value={form.rol}
           onChange={(e) => setForm({ ...form, rol: e.target.value })}
           style={{ marginRight: "10px", padding: "5px" }}
         />
-        
+
         {editando ? (
           <button onClick={guardar} style={{ backgroundColor: "orange", padding: "5px 10px" }}>
             Guardar
@@ -128,7 +129,7 @@ const UsuariosCRUD = () => {
           <button
             onClick={() => {
               setEditando(null);
-              setForm({ nombre: "", email: "", rol: ""});
+              setForm({ nombre: "", email: "", rol: "" });
             }}
             style={{ marginLeft: "10px", padding: "5px 10px" }}
           >
@@ -142,7 +143,7 @@ const UsuariosCRUD = () => {
       ) : usuarios.length === 0 ? (
         <p>No hay usuarios disponibles.</p>
       ) : (
-        <table border="1" cellPadding="8" style={{ width: "100%", borderCollapse: "collapse" }}>
+        <Table responsive striped bordered hover>
           <thead style={{ backgroundColor: "#f0f0f0" }}>
             <tr>
               <th>ID</th>
@@ -158,15 +159,15 @@ const UsuariosCRUD = () => {
                 <td>{usuario.id}</td>
                 <td>{usuario.nombre}</td>
                 <td>{usuario.email}</td>
-            <td>{usuario.rol}</td>
-                  
+                <td>{usuario.rol}</td>
+
                 <td>
                   <button onClick={() => ver(usuario)} style={{ padding: "5px 10px", marginRight: "5px" }}>
                     Ver
                   </button>
                   <button
                     onClick={() => editar(usuario)}
-                    style={{ backgroundColor: "orange", marginRight: "10px", padding: "5px 10px" }}
+                    style={{ marginRight: "10px", padding: "5px 10px" }}
                   >
                     Editar
                   </button>
@@ -179,33 +180,13 @@ const UsuariosCRUD = () => {
                 </td>
               </tr>
             ))}
-          </tbody>
-        </table>
-      )}
 
+          </tbody>
+        </Table>
+      )}
       {viendo && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0,0,0,0.5)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <div
-            style={{
-              background: "#fff",
-              padding: "20px",
-              borderRadius: "8px",
-              width: "400px",
-              boxShadow: "0 0 10px rgba(0,0,0,0.3)",
-            }}
-          >
+        <div className="modal-overlay">
+         <div className="modal-content-custom">
             <h3>{viendo.nombre}</h3>
             <p><strong>Email:</strong> {viendo.email}</p>
             <p><strong>Rol:</strong> {viendo.rol}</p>
@@ -216,8 +197,10 @@ const UsuariosCRUD = () => {
           </div>
         </div>
       )}
+
+
     </div>
-          
+
   );
 };
 

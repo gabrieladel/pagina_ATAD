@@ -160,7 +160,7 @@ const NoticiasCRUD = () => {
                 <td>{noticia.titulo}</td>
                 <td>{noticia.contenido}</td>
                 <td>
-                  {new Date(noticia.fecha_publicacion).toLocaleDateString("es-AR")}
+                  {new Date(noticia.fecha).toLocaleDateString("es-AR")}
                 </td>
                   <td>{noticia.usuario ? noticia.usuario.nombre : "—"}</td>
                 <td>
@@ -169,7 +169,7 @@ const NoticiasCRUD = () => {
                   </button>
                   <button
                     onClick={() => editar(noticia)}
-                    style={{ backgroundColor: "orange", marginRight: "10px", padding: "5px 10px" }}
+                    style={{ marginRight: "10px", padding: "5px 10px" }}
                   >
                     Editar
                   </button>

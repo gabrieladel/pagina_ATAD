@@ -1,76 +1,75 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const ActividadesCRUD = () => {
- const [actividades, setActividades] = useState([]);
+const ContactosCRUD = () => {
+  const [contactos, setContactos] = useState([]);
   const [form, setForm] = useState({ 
-    titulo: "", 
-    contenido: "", 
-    fecha: "",
-    id_usuario: "",
+    nombre: "", 
+    telefono: "", 
+    email: "",
+    mensaje: "",
   });
-  const [editando, setEditando] = useState(null);
+ 
   const [viendo, setViendo] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const API_URL = "http://localhost:3000/api/actividades";
+  const API_URL = "http://localhost:3000/api/contactos";
 
-  const fetchActividades = async () => {
+  const fetchContactos = async () => {
     try {
       const response = await axios.get(API_URL);
-      setActividades(response.data);
+      setContactos(response.data);
       setLoading(false);
     } catch (error) {
-      console.error("Error al obtener actividades:", error);
+      console.error("Error al obtener contactos:", error);
       setLoading(false);
     }
   };
 
-  const crear = async () => {
+  /* const crear = async () => {
     try {
       await axios.post(API_URL, form);
-      setForm({ titulo: "", contenido: "", fecha: "", id_usuario: ""});
-      fetchActividades();
+      setForm({ nombre: "", telefono: "", email: "", mensaje: ""});
+      fetchContactos();
     } catch (error) {
-      console.error("Error al crear Actividad:", error);
+      console.error("Error al crear contacto:", error);
     }
-  };
+  }; */
 
-  const editar = (Actividad) => {
-    setEditando(Actividad.id);
+  /* const editar = (contacto) => {
+    setEditando(contacto.id);
     setForm({ 
-      titulo: Actividad.titulo,
-      contenido: Actividad.contenido, 
-      fecha: Actividad.fecha ? Actividad.fecha.split("T")[0] : "",
-      id_usuario: Actividad.id_usuario || "",
+      nombre: contacto.nombre,
+      telefono: contacto.telefono, 
+      email: contacto.email ? contacto.email.split("T")[0] : "",
+      mensaje: contacto.mensaje || "",
     });
   };
-
+ */
   const guardar = async () => {
     try {
       await axios.put(`${API_URL}/${editando}`, form);
       setEditando(null);
-      setForm({ titulo: "", contenido: "", fecha: "", id_usuario: ""  });
-      fetchActividades();
+      setForm({ nombre: "", telefono: "", email: "", mensaje: ""  });
+      fetchContactos();
     } catch (error) {
-      console.error("Error al actualizar Actividad:", error);
+      console.error("Error al actualizar contacto:", error);
     }
   };
 
   const eliminar = async (id) => {
-    if (window.confirm("¿Seguro que querés eliminar esta Actividad?")) {
+    if (window.confirm("¿Seguro que querés eliminar esta contacto?")) {
       try {
         await axios.delete(`${API_URL}/${id}`);
-        fetchActividades();
+        fetchContactos();
       } catch (error) {
-        console.error("Error al eliminar Actividad:", error);
+        console.error("Error al eliminar contacto:", error);
       }
     }
   };
 
-  const ver = (Actividad) => {
-    setViendo(Actividad);
+  const ver = (contacto) => {
+    setViendo(contacto);
   };
 
   const cerrarModal = () => {
@@ -78,41 +77,41 @@ const ActividadesCRUD = () => {
   };
 
   useEffect(() => {
-    fetchActividades();
+    fetchContactos();
   }, []);
 
   return (
     <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h2>Gestión de Actividades</h2>
+      <h2>Gestión de Contactos</h2>
 
-      <div style={{ marginBottom: "20px" }}>
-        <h3>{editando ? "Editar Actividad" : "Nueva Actividad"}</h3>
+      {/* <div style={{ marginBottom: "20px" }}>
+        <h3>{editando ? "Editar Contacto" : "Nueva Contacto"}</h3>
         <input
           type="text"
-          placeholder="Título"
-          value={form.titulo}
-          onChange={(e) => setForm({ ...form, titulo: e.target.value })}
+          placeholder="Nombre"
+          value={form.nombre}
+          onChange={(e) => setForm({ ...form, nombre: e.target.value })}
           style={{ marginRight: "10px", padding: "5px" }}
         />
         <input
           type="text"
-          placeholder="Contenido"
-          value={form.contenido}
-          onChange={(e) => setForm({ ...form, contenido: e.target.value })}
+          placeholder="Telefono"
+          value={form.telefono}
+          onChange={(e) => setForm({ ...form, telefono: e.target.value })}
           style={{ marginRight: "10px", padding: "5px", width: "300px" }}
         />
  <input
           type="date"
-          placeholder="Fecha"
-          value={form.fecha}
-          onChange={(e) => setForm({ ...form, fecha: e.target.value })}
+          placeholder="Email"
+          value={form.email}
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
           style={{ marginRight: "10px", padding: "5px" }}
         />
         <input
           type="number"
-          placeholder="Usuario"
-          value={form.id_usuario}
-          onChange={(e) => setForm({ ...form, id_usuario: e.target.value })}
+          placeholder="Mensaje"
+          value={form.mensaje}
+          onChange={(e) => setForm({ ...form, mensaje: e.target.value })}
           style={{ marginRight: "10px", padding: "5px", width: "120px" }}
         />
         {editando ? (
@@ -129,7 +128,7 @@ const ActividadesCRUD = () => {
           <button
             onClick={() => {
               setEditando(null);
-              setForm({ titulo: "", contenido: "", fecha: "", id_usuario: "" });
+              setForm({ nombre: "", telefono: "", email: "", mensaje: "" });
             }}
             style={{ marginLeft: "10px", padding: "5px 10px" }}
           >
@@ -137,45 +136,43 @@ const ActividadesCRUD = () => {
           </button>
         )}
       </div>
-
+ */}
       {loading ? (
-        <p>Cargando actividades...</p>
-      ) : actividades.length === 0 ? (
-        <p>No hay actividades disponibles.</p>
+        <p>Cargando contactos...</p>
+      ) : contactos.length === 0 ? (
+        <p>No hay contactos disponibles.</p>
       ) : (
         <table border="1" cellPadding="8" style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead style={{ backgroundColor: "#f0f0f0" }}>
             <tr>
               <th>ID</th>
-              <th>Título</th>
-              <th>Contenido</th>
-              <th>Fecha</th>
-              <th>Usuario</th>
+              <th>NOMBRE</th>
+              <th>TELEFONO</th>
+              <th>EMAIL</th>
+              <th>MENSAJE</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            {actividades.map((Actividad) => (
-              <tr key={Actividad.id}>
-                <td>{Actividad.id}</td>
-                <td>{Actividad.titulo}</td>
-                <td>{Actividad.contenido}</td>
+            {contactos.map((contacto) => (
+              <tr key={contacto.id}>
+                <td>{contacto.id}</td>
+                <td>{contacto.nombre}</td>
+                <td>{contacto.telefono}</td>
+                <td>{contacto.email}</td>
+                <td>{contacto.mensaje}</td>
                 <td>
-                  {new Date(Actividad.fecha).toLocaleDateString("es-AR")}
-                </td>
-                  <td>{Actividad.usuario ? Actividad.usuario.nombre : "—"}</td>
-                <td>
-                  <button onClick={() => ver(Actividad)} style={{ padding: "5px 10px", marginRight: "5px" }}>
+                  <button onClick={() => ver(contacto)} style={{ padding: "5px 10px", marginRight: "5px" }}>
                     Ver
                   </button>
-                  <button
-                    onClick={() => editar(Actividad)}
+                 {/*  <button
+                    onClick={() => editar(contacto)}
                     style={{ marginRight: "10px", padding: "5px 10px" }}
                   >
                     Editar
-                  </button>
+                  </button> */}
                   <button
-                    onClick={() => eliminar(Actividad.id)}
+                    onClick={() => eliminar(contacto.id)}
                     style={{ backgroundColor: "red", color: "#fff", padding: "5px 10px" }}
                   >
                     Eliminar
@@ -186,7 +183,7 @@ const ActividadesCRUD = () => {
           </tbody>
         </table>
       )}
-
+    
       {viendo && (
         <div
           style={{
@@ -210,10 +207,10 @@ const ActividadesCRUD = () => {
               boxShadow: "0 0 10px rgba(0,0,0,0.3)",
             }}
           >
-            <h3>{viendo.titulo}</h3>
-            <p><strong>Contenido:</strong> {viendo.contenido}</p>
-            <p><strong>Fecha:</strong> {new Date(viendo.fecha).toLocaleDateString("es-AR")}</p>
-            <p><strong>Usuario:</strong> {viendo.usuario ? viendo.usuario.nombre : "—"}</p>
+            <h3>{viendo.nombre}</h3>
+            <p><strong>Telefono:</strong> {viendo.telefono}</p>
+            <p><strong>Email:</strong> {viendo.email}</p>
+            <p><strong>Mensaje:</strong> {viendo.mensaje}</p>
             <button onClick={cerrarModal} style={{ marginTop: "10px", padding: "5px 10px" }}>
               Cerrar
             </button>
@@ -225,4 +222,4 @@ const ActividadesCRUD = () => {
   );
 };
 
-export default ActividadesCRUD;
+export default ContactosCRUD;
