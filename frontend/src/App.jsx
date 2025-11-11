@@ -1,5 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Header from "./components/header/Header";
 import Nosotros from "./components/nosotros/Nosotros";
 import Footer from "./components/footer/Footer";
@@ -19,14 +20,18 @@ import { AuthProvider } from "./context/AuthContext";
 const LandingPageLayout = () => (
   <>
     <Header />
-    <Nosotros />
+    <section id="nosotros">
+      <Nosotros />
+    </section>
+
     <section id="proyectos">
       <SeccionProyectos />
     </section>
     <section id="eventos">
       <h2>Eventos</h2>
+      <Eventos />
     </section>
-    <Eventos />
+
     <section id="contacto">
       <Contacto />
     </section>
