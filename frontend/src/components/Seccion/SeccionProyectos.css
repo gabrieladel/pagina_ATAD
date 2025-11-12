@@ -8,14 +8,15 @@ li{
   text-align: center;
 }
    
-   .containerseccionProyecto{
+.containerseccionProyecto{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     align-content: center;
     align-items: center;
+    padding-top: 3rem;
 
-   }
+}
 .card1{
     margin:20px;
 }

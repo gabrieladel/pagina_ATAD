@@ -5,14 +5,17 @@ h1 {
 
 section#nosotros {
     margin-top: 4vh;
+    padding-top: 3rem;
 }
 
 .conteiner {
+    
     width: 90%;
     max-width: 1400px;
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 10px;
+
 }
 
 .content-inicial {

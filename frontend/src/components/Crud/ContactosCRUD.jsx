@@ -83,60 +83,7 @@ const ContactosCRUD = () => {
   return (
     <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
       <h2>Gestión de Contactos</h2>
-
-      {/* <div style={{ marginBottom: "20px" }}>
-        <h3>{editando ? "Editar Contacto" : "Nueva Contacto"}</h3>
-        <input
-          type="text"
-          placeholder="Nombre"
-          value={form.nombre}
-          onChange={(e) => setForm({ ...form, nombre: e.target.value })}
-          style={{ marginRight: "10px", padding: "5px" }}
-        />
-        <input
-          type="text"
-          placeholder="Telefono"
-          value={form.telefono}
-          onChange={(e) => setForm({ ...form, telefono: e.target.value })}
-          style={{ marginRight: "10px", padding: "5px", width: "300px" }}
-        />
- <input
-          type="date"
-          placeholder="Email"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-          style={{ marginRight: "10px", padding: "5px" }}
-        />
-        <input
-          type="number"
-          placeholder="Mensaje"
-          value={form.mensaje}
-          onChange={(e) => setForm({ ...form, mensaje: e.target.value })}
-          style={{ marginRight: "10px", padding: "5px", width: "120px" }}
-        />
-        {editando ? (
-          <button onClick={guardar} style={{ backgroundColor: "orange", padding: "5px 10px" }}>
-            Guardar
-          </button>
-        ) : (
-          <button onClick={crear} style={{ backgroundColor: "green", color: "#fff", padding: "5px 10px" }}>
-            Agregar
-          </button>
-        )}
-
-        {editando && (
-          <button
-            onClick={() => {
-              setEditando(null);
-              setForm({ nombre: "", telefono: "", email: "", mensaje: "" });
-            }}
-            style={{ marginLeft: "10px", padding: "5px 10px" }}
-          >
-            Cancelar
-          </button>
-        )}
-      </div>
- */}
+      
       {loading ? (
         <p>Cargando contactos...</p>
       ) : contactos.length === 0 ? (
@@ -165,12 +112,7 @@ const ContactosCRUD = () => {
                   <button onClick={() => ver(contacto)} style={{ padding: "5px 10px", marginRight: "5px" }}>
                     Ver
                   </button>
-                 {/*  <button
-                    onClick={() => editar(contacto)}
-                    style={{ marginRight: "10px", padding: "5px 10px" }}
-                  >
-                    Editar
-                  </button> */}
+              
                   <button
                     onClick={() => eliminar(contacto.id)}
                     style={{ backgroundColor: "red", color: "#fff", padding: "5px 10px" }}

@@ -1,0 +1,23 @@
+
+section#eventos {
+    padding-top: 2rem;
+}
+
+.logo-redes {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  margin: 15px auto;
+
+  transition: transform 0.3s ease;
+}
+
+.logo-redes:hover {
+  transform: scale(1.1);
+}
+
+#eventos h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  margin-bottom: 2px;
+}

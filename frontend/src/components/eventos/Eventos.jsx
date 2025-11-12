@@ -1,48 +1,41 @@
-import "./eventos.css";
+import "./Eventos.css";
 import Instagram from "../../assets/images/instagram-logo.png";
 import Facebook from "../../assets/images/facebook-logo.svg";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
+
 function Eventos() {
   return (
     <>
-      <section id="eventos">
-        <h2>Seguinos en nuestras redes y enterate de nuestros eventos</h2>
-        <div className="row">
-          <div className="col-sm-6 mb-3 mb-sm-0">
-            <div className="card">
-              <div className="card-body">
-                {/* <h5 className="card-title">Facebook</h5> */}
-                <img src={Facebook} className="card-img-top" alt="..." />
+<section id="eventos" className="text-center my-5">
+  <h2>Seguinos en nuestras redes y enterate de nuestros eventos</h2>
 
-                <a
-                  href="https://www.facebook.com/profile.php?id=100057622172867&locale=es_LA"
-                  target="_blanck"
-                  title="Facebook"
-                  className="btn btn-primary"
-                >
-                  Seguinos
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-6">
-            <div className="card">
-              <div className="card-body">
-                {/* <h5 className="card-title">Instagram</h5> */}
+  <CardGroup className="d-flex justify-content-center gap-4 mt-4 flex-wrap">
+    {/* Facebook */}
+    <Card style={{ width: "220px", border: "none", alignItems: "center" }}>
+      <Card.Img variant="top" src={Facebook} className="logo-redes" />
+      <Card.Body className="text-center">
+        <Card.Link href="https://www.facebook.com/profile.php?id=100057622172867&locale=es_LA" target="_blank" rel="noopener noreferrer"
+          className="btn btn-primary mt-3">
+           Seguinos
+        </Card.Link> 
+      </Card.Body>
+    </Card>
 
-                <img src={Instagram} className="card-img-top" alt="..." />
-                <a
-                  href="https://www.instagram.com/atad1963/"
-                  target="_blanck"
-                  title="Instagram"
-                  className="btn btn-primary"
-                >
-                  Seguinos
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    {/* Instagram */}
+    <Card style={{ width: "220px", border: "none", alignItems: "center" }}>
+      <Card.Img variant="top" src={Instagram} className="logo-redes" />
+      <Card.Body className="text-center">
+        <Card.Link href="https://www.instagram.com/atad1963/" target="_blank" rel="noopener noreferrer"
+          className="btn btn-primary mt-3">
+           Seguinos
+        </Card.Link> 
+      </Card.Body>
+    </Card>
+  </CardGroup>
+</section>
+
     </>
   );
 }

@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Form from "react-bootstrap/Form";
+
+
 
 const NoticiasCRUD = () => {
   const [noticias, setNoticias] = useState([]);
-  const [form, setForm] = useState({ 
-    titulo: "", 
-    contenido: "", 
+  const [form, setForm] = useState({
+    titulo: "",
+    contenido: "",
     fecha: "",
     id_usuario: "",
   });
@@ -29,7 +35,7 @@ const NoticiasCRUD = () => {
   const crear = async () => {
     try {
       await axios.post(API_URL, form);
-      setForm({ titulo: "", contenido: "", fecha: "", id_usuario: ""});
+      setForm({ titulo: "", contenido: "", fecha: "", id_usuario: "" });
       fetchNoticias();
     } catch (error) {
       console.error("Error al crear noticia:", error);
@@ -38,9 +44,9 @@ const NoticiasCRUD = () => {
 
   const editar = (noticia) => {
     setEditando(noticia.id);
-    setForm({ 
+    setForm({
       titulo: noticia.titulo,
-      contenido: noticia.contenido, 
+      contenido: noticia.contenido,
       fecha: noticia.fecha ? noticia.fecha.split("T")[0] : "",
       id_usuario: noticia.id_usuario || "",
     });
@@ -50,7 +56,7 @@ const NoticiasCRUD = () => {
     try {
       await axios.put(`${API_URL}/${editando}`, form);
       setEditando(null);
-      setForm({ titulo: "", contenido: "", fecha: "", id_usuario: ""  });
+      setForm({ titulo: "", contenido: "", fecha: "", id_usuario: "" });
       fetchNoticias();
     } catch (error) {
       console.error("Error al actualizar noticia:", error);
@@ -81,68 +87,77 @@ const NoticiasCRUD = () => {
   }, []);
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+    <div>
       <h2>Gestión de Noticias</h2>
-
-      <div style={{ marginBottom: "20px" }}>
+      <div>
         <h3>{editando ? "Editar Noticia" : "Nueva Noticia"}</h3>
-        <input
-          type="text"
-          placeholder="Título"
-          value={form.titulo}
-          onChange={(e) => setForm({ ...form, titulo: e.target.value })}
-          style={{ marginRight: "10px", padding: "5px" }}
-        />
-        <input
-          type="text"
-          placeholder="Contenido"
-          value={form.contenido}
-          onChange={(e) => setForm({ ...form, contenido: e.target.value })}
-          style={{ marginRight: "10px", padding: "5px", width: "300px" }}
-        />
- <input
-          type="date"
-          placeholder="Fecha"
-          value={form.fecha}
-          onChange={(e) => setForm({ ...form, fecha: e.target.value })}
-          style={{ marginRight: "10px", padding: "5px" }}
-        />
-        <input
-          type="number"
-          placeholder="Usuario"
-          value={form.id_usuario}
-          onChange={(e) => setForm({ ...form, id_usuario: e.target.value })}
-          style={{ marginRight: "10px", padding: "5px", width: "120px" }}
-        />
+        <InputGroup className="mb-3">
+          <InputGroup.Text>Título</InputGroup.Text>
+          <Form.Control
+            type="text"
+            value={form.titulo}
+            onChange={(e) => setForm({ ...form, titulo: e.target.value })}
+          />
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <InputGroup.Text>Contenido</InputGroup.Text>
+          <Form.Control
+            as="textarea"
+            value={form.contenido}
+            onChange={(e) => setForm({ ...form, contenido: e.target.value })}
+          />
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <InputGroup.Text>Fecha</InputGroup.Text>
+          <Form.Control
+            type="date"
+            value={form.fecha}
+            onChange={(e) => setForm({ ...form, fecha: e.target.value })}
+          />
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <InputGroup.Text>Usuario</InputGroup.Text>
+          <Form.Control
+            type="number"
+            value={form.id_usuario}
+            onChange={(e) => setForm({ ...form, id_usuario: e.target.value })}
+          />
+        </InputGroup>
+
         {editando ? (
-          <button onClick={guardar} style={{ backgroundColor: "orange", padding: "5px 10px" }}>
+          <Button onClick={guardar} variant="outline-success">
             Guardar
-          </button>
+          </Button>
         ) : (
-          <button onClick={crear} style={{ backgroundColor: "green", color: "#fff", padding: "5px 10px" }}>
+          <Button onClick={crear} variant="outline-warning">
             Agregar
-          </button>
+          </Button>
         )}
 
         {editando && (
-          <button
+          <Button
+            variant="outline-danger"
+            className="ms-2"
             onClick={() => {
               setEditando(null);
               setForm({ titulo: "", contenido: "", fecha: "", id_usuario: "" });
             }}
-            style={{ marginLeft: "10px", padding: "5px 10px" }}
           >
             Cancelar
-          </button>
+          </Button>
         )}
       </div>
+
 
       {loading ? (
         <p>Cargando noticias...</p>
       ) : noticias.length === 0 ? (
         <p>No hay noticias disponibles.</p>
       ) : (
-        <table border="1" cellPadding="8" style={{ width: "100%", borderCollapse: "collapse" }}>
+        <Table responsive striped bordered hover>
           <thead style={{ backgroundColor: "#f0f0f0" }}>
             <tr>
               <th>ID</th>
@@ -162,30 +177,27 @@ const NoticiasCRUD = () => {
                 <td>
                   {new Date(noticia.fecha).toLocaleDateString("es-AR")}
                 </td>
-                  <td>{noticia.usuario ? noticia.usuario.nombre : "—"}</td>
+                <td>{noticia.usuario ? noticia.usuario.nombre : "—"}</td>
                 <td>
-                  <button onClick={() => ver(noticia)} style={{ padding: "5px 10px", marginRight: "5px" }}>
+                  <Button onClick={() => ver(noticia)} variant="outline-primary">
                     Ver
-                  </button>
-                  <button
-                    onClick={() => editar(noticia)}
-                    style={{ marginRight: "10px", padding: "5px 10px" }}
-                  >
-                    Editar
-                  </button>
-                  <button
+                  </Button>
+                  <Button onClick={() => editar(noticia)} variant="outline-success">Editar</Button>
+
+                  <Button
                     onClick={() => eliminar(noticia.id)}
-                    style={{ backgroundColor: "red", color: "#fff", padding: "5px 10px" }}
+                    variant="outline-danger"
+
                   >
                     Eliminar
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       )}
-    
+
       {viendo && (
         <div
           style={{
@@ -213,14 +225,12 @@ const NoticiasCRUD = () => {
             <p><strong>Contenido:</strong> {viendo.contenido}</p>
             <p><strong>Fecha:</strong> {new Date(viendo.fecha).toLocaleDateString("es-AR")}</p>
             <p><strong>Usuario:</strong> {viendo.usuario ? viendo.usuario.nombre : "—"}</p>
-            <button onClick={cerrarModal} style={{ marginTop: "10px", padding: "5px 10px" }}>
-              Cerrar
-            </button>
+            <Button variant="outline-secondary" onClick={cerrarModal} >Cerrar</Button>
           </div>
         </div>
       )}
     </div>
-          
+
   );
 };
 

@@ -1,0 +1,13 @@
+.redes-img {
+  width: 80px;      /* ajustá el tamaño que quieras */
+  height: 80px;
+  margin: 0 auto;   /* centra la imagen */
+  display: block;   /* asegura centrado dentro de la card */
+  object-fit: contain;
+}
+@media (max-width: 768px) {
+  .redes-img {
+    width: 60px;
+    height: 60px;
+  }
+}
