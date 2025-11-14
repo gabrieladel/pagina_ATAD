@@ -1,25 +1,84 @@
-.barralateral{
-    overflow-y: scroll;
-}
-li{
-    list-style: none;
-}
-.titulo{
-  text-align: center;
-}
-   
-.containerseccionProyecto{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    align-content: center;
-    align-items: center;
-    padding-top: 3rem;
 
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 420px; /* MISMA ALTURA PARA TODAS */
+  perspective: 1000px;
 }
-.card1{
-    margin:20px;
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 1.3s;/*velocidad del giro*/
+  transform-style: preserve-3d;
+  cursor: pointer;
 }
-.card2{
-    margin:20px;
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* CARA DELANTERA Y TRASERA */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden; /* evita que el contenido quede por fuera */
+  background: white;
+}
+
+/* ---------- FRENTE ---------- */
+.flip-card-front img {
+  width: 100%;
+  height: 65%;            /* TAMAÑO FIJO PARA TODAS LAS IMÁGENES */
+  object-fit: cover;      /* recorta sin deformar */
+  border-bottom: 2px solid #e5e5e5;
+}
+
+.flip-card-front h3 {
+  margin-top: 15px;
+}
+
+/* ---------- DORSO ---------- */
+.flip-card-back {
+  transform: rotateY(180deg);
+  padding: 20px;
+  text-align: left;
+  overflow-y: auto; /* permite scroll si el texto es largo */
+}
+
+/* Estilo del scroll del dorso */
+.flip-card-back::-webkit-scrollbar {
+  width: 6px;
+}
+
+.flip-card-back::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 5px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .flip-card {
+    height: 380px;
+  }
+
+  .flip-card-front img {
+    height: 60%;
+  }
+}
+
+@media (max-width: 576px) {
+  .flip-card {
+    height: 340px;
+  }
+
+  .flip-card-front img {
+    height: 55%;
+  }
 }
