@@ -18,7 +18,7 @@ import { AuthProvider } from "./context/AuthContext";
 
 const LandingPageLayout = () => (
   <>
-    <Header />
+    
     <section id="nosotros">
       <Nosotros />
     </section>

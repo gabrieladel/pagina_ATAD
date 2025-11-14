@@ -1,8 +1,10 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { PersonCircle } from "react-bootstrap-icons";
+import imgLogo from "../assets/images/logoAtad.jpg";
+import { Navbar, Nav, Container, Button, NavDropdown } from "react-bootstrap";
 
-const Navbar = () => {
+const CustomNavbar = () => {
   const { usuario, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,66 +17,77 @@ const Navbar = () => {
   const isDashboard = location.pathname.startsWith("/dashboard");
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-light">
-      <div className="container">
-        <div className="collapse navbar-collapse">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+    <Navbar expand="lg" bg="light" variant="light" sticky="top" className="shadow-sm">
+      <Container>
+       <Navbar.Brand as={Link} to="/" className="Logo fw-bold text-dark">
+          <img
+            src={imgLogo}
+            alt="Logo"
+            width="50"
+            height="44"
+            />
+        </Navbar.Brand>
+        {/* Botón hamburguesa */}
+      {  <Navbar.Toggle aria-controls="main-navbar" />}
+
+        <Navbar.Collapse id="main-navbar" className="bg-light" >
+          <Nav className="me-auto">
             {!isDashboard && (
               <>
-                <li className="nav-item">
-                  <a className="nav-link text-dark" href="#nosotros">Inicio</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-dark" href="#proyectos">Proyectos</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-dark" href="#eventos">Eventos</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-dark" href="#contacto">Contacto</a>
-                </li>
+                <Nav.Link href="#nosotros" className="text-dark">
+                  Inicio
+                </Nav.Link>
+                <Nav.Link href="#proyectos" className="text-dark">
+                  Proyectos
+                </Nav.Link>
+                <Nav.Link href="#eventos" className="text-dark">
+                  Eventos
+                </Nav.Link>
+                <Nav.Link href="#contacto" className="text-dark">
+                  Contacto
+                </Nav.Link>
               </>
             )}
-          </ul>
+          </Nav>
 
-          <ul className="navbar-nav ms-auto d-flex align-items-center gap-3">
+          <Nav className="ms-auto align-items-center gap-3">
             {usuario ? (
               <>
-                {usuario.rol === "admin" && !isDashboard && (
-                  <li className="nav-item">
-                    <button
-                      className="btn btn-outline-dark btn-sm"
-                      onClick={() => navigate("/dashboard")}
-                    >
-                      Ir al Panel
-                    </button>
-                  </li>
+              <NavDropdown
+                  title={
+                    <span className="d-flex align-items-center">
+                      <PersonCircle size={22} className="text-secondary me-1" />
+                      <span className="text-secondary">{usuario.nombre}</span>
+                    </span>
+                  }
+                  id="user-dropdown"
+                  align="end"
+                >
+                  {usuario.rol === "admin" && !isDashboard && (
+                  
+                    <NavDropdown.Item  onClick={() => navigate("/dashboard")}>
+                   Ir al Panel
+                  </NavDropdown.Item>
+                 
                 )}
-
-                <li className="nav-item d-flex align-items-center gap-2">
-                  <PersonCircle size={22} className="text-secondary" />
-                  <span className="text-secondary">{usuario.nombre}</span>
-                  <button
-                    className="btn btn-link text-secondary text-decoration-none p-0 ms-2"
-                    onClick={handleLogout}
-                  >
+                  <NavDropdown.Item onClick={handleLogout}>
                     Cerrar sesión
-                  </button>
-                </li>
+                  </NavDropdown.Item>
+                </NavDropdown>
+                
               </>
             ) : (
-              <li className="nav-item">
-                <Link className="nav-link text-dark" to="/login">
-                  Iniciar sesión
-                </Link>
-              </li>
+              <Nav.Link as={Link} to="/login" className="text-dark">
+                Iniciar sesión
+              </Nav.Link>
             )}
-          </ul>
-        </div>
-      </div>
-    </nav>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default CustomNavbar;
+
 
