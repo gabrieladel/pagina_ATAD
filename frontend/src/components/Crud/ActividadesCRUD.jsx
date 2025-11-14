@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
-
+import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Form from "react-bootstrap/Form";
 import axios from "axios";
 
 const ActividadesCRUD = () => {
@@ -116,25 +119,26 @@ const ActividadesCRUD = () => {
           style={{ marginRight: "10px", padding: "5px", width: "120px" }}
         />
         {editando ? (
-          <button onClick={guardar} style={{ backgroundColor: "orange", padding: "5px 10px" }}>
+          <Button onClick={guardar} variant="outline-success">
             Guardar
-          </button>
+          </Button>
         ) : (
-          <button onClick={crear} style={{ backgroundColor: "green", color: "#fff", padding: "5px 10px" }}>
-            Agregar
-          </button>
+          <Button onClick={crear} variant="outline-warning">
+          Agregar
+          </Button>
         )}
 
         {editando && (
-          <button
+          <Button
+           variant="outline-danger"
             onClick={() => {
               setEditando(null);
               setForm({ titulo: "", contenido: "", fecha: "", id_usuario: "" });
             }}
-            style={{ marginLeft: "10px", padding: "5px 10px" }}
+            
           >
             Cancelar
-          </button>
+          </Button>
         )}
       </div>
 
@@ -143,7 +147,7 @@ const ActividadesCRUD = () => {
       ) : actividades.length === 0 ? (
         <p>No hay actividades disponibles.</p>
       ) : (
-        <table border="1" cellPadding="8" style={{ width: "100%", borderCollapse: "collapse" }}>
+        <Table responsive striped bordered hover>
           <thead style={{ backgroundColor: "#f0f0f0" }}>
             <tr>
               <th>ID</th>
@@ -165,26 +169,23 @@ const ActividadesCRUD = () => {
                 </td>
                   <td>{Actividad.usuario ? Actividad.usuario.nombre : "—"}</td>
                 <td>
-                  <button onClick={() => ver(Actividad)} style={{ padding: "5px 10px", marginRight: "5px" }}>
-                    Ver
-                  </button>
-                  <button
+                  <Button onClick={() => ver(Actividad)} variant="outline-primary">
+Ver
+                  </Button>
+                  <Button
                     onClick={() => editar(Actividad)}
-                    style={{ marginRight: "10px", padding: "5px 10px" }}
-                  >
-                    Editar
-                  </button>
-                  <button
+                    variant="outline-success"> Editar
+                  </Button>
+                  <Button
                     onClick={() => eliminar(Actividad.id)}
-                    style={{ backgroundColor: "red", color: "#fff", padding: "5px 10px" }}
-                  >
+                   variant="outline-danger">
                     Eliminar
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       )}
 
       {viendo && (

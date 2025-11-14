@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Modal, Button, Table } from 'react-bootstrap';
+import { Modal, Button, Table, ButtonGroup } from 'react-bootstrap';
 
 const UsuariosCRUD = () => {
   const [usuarios, setNoticias] = useState([]);
@@ -116,25 +116,25 @@ const UsuariosCRUD = () => {
         />
 
         {editando ? (
-          <button onClick={guardar} style={{ backgroundColor: "orange", padding: "5px 10px" }}>
+          <Button onClick={guardar} variant="outline-primary">
             Guardar
-          </button>
+          </Button>
         ) : (
-          <button onClick={crear} style={{ backgroundColor: "green", color: "#fff", padding: "5px 10px" }}>
+          <Button onClick={crear} variant="outline-success">
             Agregar
-          </button>
+          </Button>
         )}
 
         {editando && (
-          <button
+          <Button
             onClick={() => {
               setEditando(null);
               setForm({ nombre: "", email: "", rol: "" });
             }}
-            style={{ marginLeft: "10px", padding: "5px 10px" }}
+            variant="outline-danger"
           >
             Cancelar
-          </button>
+          </Button>
         )}
       </div>
 
@@ -162,21 +162,20 @@ const UsuariosCRUD = () => {
                 <td>{usuario.rol}</td>
 
                 <td>
-                  <button onClick={() => ver(usuario)} style={{ padding: "5px 10px", marginRight: "5px" }}>
+                  <Button onClick={() => ver(usuario)} variant="outline-primary">
                     Ver
-                  </button>
-                  <button
-                    onClick={() => editar(usuario)}
-                    style={{ marginRight: "10px", padding: "5px 10px" }}
-                  >
+                  </Button>
+                  <Button
+                    onClick={() => editar(usuario)} variant="outline-success"
+                   >
                     Editar
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     onClick={() => eliminar(usuario.id)}
-                    style={{ backgroundColor: "red", color: "#fff", padding: "5px 10px" }}
+                     variant="outline-danger"
                   >
                     Eliminar
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}
@@ -191,9 +190,9 @@ const UsuariosCRUD = () => {
             <p><strong>Email:</strong> {viendo.email}</p>
             <p><strong>Rol:</strong> {viendo.rol}</p>
             
-            <button onClick={cerrarModal} style={{ marginTop: "10px", padding: "5px 10px" }}>
+            <Button onClick={cerrarModal}variant="outline-dark" >
               Cerrar
-            </button>
+            </Button>
           </div>
         </div>
       )}

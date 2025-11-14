@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Form from "react-bootstrap/Form";
+
 
 const ContactosCRUD = () => {
   const [contactos, setContactos] = useState([]);
@@ -26,26 +31,6 @@ const ContactosCRUD = () => {
     }
   };
 
-  /* const crear = async () => {
-    try {
-      await axios.post(API_URL, form);
-      setForm({ nombre: "", telefono: "", email: "", mensaje: ""});
-      fetchContactos();
-    } catch (error) {
-      console.error("Error al crear contacto:", error);
-    }
-  }; */
-
-  /* const editar = (contacto) => {
-    setEditando(contacto.id);
-    setForm({ 
-      nombre: contacto.nombre,
-      telefono: contacto.telefono, 
-      email: contacto.email ? contacto.email.split("T")[0] : "",
-      mensaje: contacto.mensaje || "",
-    });
-  };
- */
   const guardar = async () => {
     try {
       await axios.put(`${API_URL}/${editando}`, form);
@@ -89,7 +74,7 @@ const ContactosCRUD = () => {
       ) : contactos.length === 0 ? (
         <p>No hay contactos disponibles.</p>
       ) : (
-        <table border="1" cellPadding="8" style={{ width: "100%", borderCollapse: "collapse" }}>
+        <Table responsive striped bordered hover>
           <thead style={{ backgroundColor: "#f0f0f0" }}>
             <tr>
               <th>ID</th>
@@ -109,21 +94,21 @@ const ContactosCRUD = () => {
                 <td>{contacto.email}</td>
                 <td>{contacto.mensaje}</td>
                 <td>
-                  <button onClick={() => ver(contacto)} style={{ padding: "5px 10px", marginRight: "5px" }}>
+                  <Button onClick={() => ver(contacto)}variant="outline-primary">
                     Ver
-                  </button>
+                  </Button>
               
-                  <button
+                  <Button
                     onClick={() => eliminar(contacto.id)}
-                    style={{ backgroundColor: "red", color: "#fff", padding: "5px 10px" }}
+                     variant="outline-danger"
                   >
                     Eliminar
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       )}
     
       {viendo && (
