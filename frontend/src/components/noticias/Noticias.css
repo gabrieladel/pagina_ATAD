@@ -1,0 +1,39 @@
+
+.card1{
+ background-color: linear-gradient(135deg, #ebbebe, #f2f2f2);
+ border-left: 6px solid #0d6efd;
+ border-radius: 12px;
+ height: 200px;
+ width: 100%;
+}                       
+
+.carousel .row {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.card1 p {
+  text-align: justify;
+}
+
+
+.col-centered {
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-indicators {
+  bottom: -40px !important;   /* mueve las líneas hacia abajo */
+}
+
+/* CÍRCULO */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #6fb1f8;   
+  border-radius: 50%;           
+  padding: 20px;                
+  background-size: 18px 18px;   /* tamaño de la flecha */
+}
+
+
+
