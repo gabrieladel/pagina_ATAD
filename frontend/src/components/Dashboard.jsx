@@ -11,7 +11,7 @@ import UsuariosCRUD from './Crud/UsuariosCRUD';
 const Dashboard = () => {
     const { usuario, token, logout } = useAuth();
     const [dashboardMessage, setDashboardMessage] = useState('');
-    const [seccionActiva, setSeccionActiva] = useState('inicio'); // Nuevo estado para la sección activa
+    const [seccionActiva, setSeccionActiva] = useState('inicio'); 
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -61,7 +61,7 @@ const Dashboard = () => {
                 return <ContactosCRUD />;
             default:
                 return (
-                    <div style={{ padding: "2rem", textAlign: "center" }}>
+                    <div style={{ padding: "4rem", textAlign: "center" }}>
                         <h2>Bienvenido, {usuario?.nombre}</h2>
                         <p>{dashboardMessage}</p>
                         <button
