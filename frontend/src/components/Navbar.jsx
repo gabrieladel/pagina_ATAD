@@ -40,8 +40,11 @@ const CustomNavbar = () => {
                 <Nav.Link href="#proyectos" className="text-dark">
                   Proyectos
                 </Nav.Link>
-                <Nav.Link href="#eventos" className="text-dark">
-                  Eventos
+                <Nav.Link href="#noticias" className="text-dark">
+                  Noticias
+                </Nav.Link>
+                <Nav.Link href="#actividades" className="text-dark">
+                  Actividades
                 </Nav.Link>
                 <Nav.Link href="#contacto" className="text-dark">
                   Contacto
