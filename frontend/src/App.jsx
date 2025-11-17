@@ -5,7 +5,8 @@ import Header from "./components/header/Header";
 import Nosotros from "./components/nosotros/Nosotros";
 import Footer from "./components/footer/Footer";
 import Contacto from "./components/contacto/contacto";
-import Eventos from "./components/eventos/Eventos";
+import Noticia from "./components/noticias/Noticias";
+import Actividad from "./components/actividades/Activides";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
@@ -26,9 +27,13 @@ const LandingPageLayout = () => (
     <section id="proyectos">
       <SeccionProyectos />
     </section>
-    <section id="eventos">
-      <h2>Eventos</h2>
-      <Eventos />
+    <section id="noticias">
+      <h2>Noticias</h2>
+      <Noticia />
+    </section>
+      <section id="actividades">
+      <h2>Actividades</h2>
+      <Actividad />
     </section>
 
     <section id="contacto">
