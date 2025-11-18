@@ -9,7 +9,7 @@ import Noticia from "./components/noticias/Noticias";
 import Actividad from "./components/actividades/Activides";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/Dashboard/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import SeccionProyectos from "./components/Seccion/SeccionProyectos";
 import React from "react";
