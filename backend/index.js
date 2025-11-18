@@ -73,7 +73,7 @@ app.post('/register', async (req, res) => {
     const token = jwt.sign(
       { id: nuevoUsuario.id, rol: nuevoUsuario.rol },
       jwtSecret,
-      { expiresIn: '1h' }
+      { expiresIn: process.env.JWT_EXPIRES }
     );
     res.json({
       message: 'Usuario registrado correctamente.',
