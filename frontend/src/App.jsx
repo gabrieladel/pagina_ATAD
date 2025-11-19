@@ -6,7 +6,7 @@ import Nosotros from "./components/nosotros/Nosotros";
 import Footer from "./components/footer/Footer";
 import Contacto from "./components/contacto/contacto";
 import Noticia from "./components/noticias/Noticias";
-import Actividad from "./components/actividades/Activides";
+import Actividad from "./components/actividades/Actividades";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard/Dashboard";
