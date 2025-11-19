@@ -64,7 +64,7 @@ const Dashboard = () => {
               variant="dark"
               size="lg"
               className="px-4"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/nosotros")}
             >
               Ver Sitio Web
             </Button>
