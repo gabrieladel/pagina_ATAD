@@ -1,6 +1,5 @@
 import "./Nosotros.css";
 import imagen from "../../assets/images/ATAD-In.jpg";
-import imagen_atdi from "../../assets/images/atdi_img.jpg";
 import imgLog from "../../assets/images/logoAtad.jpg";
 import PortalExample from "../Modal/PortalExample";
 
@@ -27,26 +26,6 @@ export default function Nosotros() {
           <div className="conteiner-2">
             <div className="imagen1">
               <img src={imagen} alt="ATAD" width="390" height="230" />
-            </div>
-            <div className="card border-0">
-              <img
-                src={imagen_atdi}
-                alt="ATDI"
-                className="card-img-top rounded-0"
-              /* width="250"
-              height="250" */
-              />
-              <div className="card-body">
-                <h5 className="card-title">ATDI</h5>
-                <p className="card-text">
-                  Atención temprana del desarrollo infantil (45 dias a 3 años).
-                </p>
-
-                <PortalExample />
-                <a href="#" className="btn btn-primary btn-sm">
-                  Para mas info
-                </a>
-              </div>
             </div>
           </div>
         </div>

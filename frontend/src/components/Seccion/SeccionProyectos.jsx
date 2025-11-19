@@ -1,4 +1,5 @@
 import "./SeccionProyectos.css";
+import atdi from "../../assets/images/atdi_img.jpg";
 import inicial from '../../assets/images/inicial.jpg';
 import primaria from '../../assets/images/primaria.jpg';
 import proyecto2 from '../../assets/images/proyecto2.jpg';
@@ -9,9 +10,36 @@ function SeccionProyectos() {
       <h2 className="text-center mb-5 fw-bold">PROPUESTAS EDUCATIVAS</h2>
 
       <div className="row g-4 justify-content-center">
+{/* -------- TARJETA 1 -------- */}
+       <div className="col-12 col-md-6">
 
-        {/* -------- TARJETA 1 -------- */}
-        <div className="col-md-4">
+          <div className="flip-card">
+            <div className="flip-card-inner">
+
+              <div className="flip-card-front">
+                <img src={atdi} className="img-fluid rounded-3" alt="ATDI" />
+                <h3 className="text-center mt-3 fw-bold">ATDI</h3>
+              </div>
+
+              <div className="flip-card-back p-3 rounded-3">
+                <h4 className="fw-bold">ATDI</h4>
+                <p>
+                  ATDI (Atención Temprana del Desarrollo Infantil, 45 días a 3 años). <br /><br />
+                  • Garantizar el derecho a la educación desde el nacimiento.<br />
+                  • Valorar necesidades pedagógicas tempranas.<br />
+                  • Planificar acciones integrales para cuidado y crianza.<br />
+                  • Potenciar el desarrollo mediante intervenciones personalizadas.<br />
+                  • Trabajar en conjunto con las familias.
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+       
+        {/* -------- TARJETA 2 -------- */}
+       <div className="col-12 col-md-6">
+
           <div className="flip-card">
             <div className="flip-card-inner">
 
@@ -41,9 +69,9 @@ function SeccionProyectos() {
           </div>
         </div>
 
-        {/* -------- TARJETA 2 -------- */}
-        <div className="col-md-4">
-          <div className="flip-card">
+        {/* -------- TARJETA 3------- */}
+       <div className="col-12 col-md-6">
+         <div className="flip-card">
             <div className="flip-card-inner">
 
               <div className="flip-card-front">
@@ -70,8 +98,9 @@ function SeccionProyectos() {
           </div>
         </div>
 
-        {/* -------- TARJETA 3 -------- */}
-        <div className="col-md-4">
+        {/* -------- TARJETA 4-------- */}
+        <div className="col-12 col-md-6">
+
           <div className="flip-card">
             <div className="flip-card-inner">
 
