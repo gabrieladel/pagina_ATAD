@@ -34,19 +34,19 @@ const CustomNavbar = () => {
           <Nav className="me-auto">
             {!isDashboard && (
               <>
-                <Nav.Link href="#nosotros" className="text-dark">
+                <Nav.Link as={Link} to="/nosotros" className="text-dark">
                   Inicio
                 </Nav.Link>
-                <Nav.Link href="#proyectos" className="text-dark">
+                <Nav.Link as={Link} to="/proyectos" className="text-dark">
                   Proyectos
                 </Nav.Link>
-                <Nav.Link href="#noticias" className="text-dark">
+                <Nav.Link as={Link} to="/noticias" className="text-dark">
                   Noticias
                 </Nav.Link>
-                <Nav.Link href="#actividades" className="text-dark">
+                <Nav.Link as={Link} to="/actividades" className="text-dark">
                   Actividades
                 </Nav.Link>
-                <Nav.Link href="#contacto" className="text-dark">
+                <Nav.Link as={Link} to="/contacto" className="text-dark">
                   Contacto
                 </Nav.Link>
               </>
