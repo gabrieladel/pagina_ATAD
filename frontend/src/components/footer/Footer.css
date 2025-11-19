@@ -1,13 +1,20 @@
+.custom-footer {
+  background: #0c2b47;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0;
+  z-index: 1000;
+}
 
-/* .container{
-    display: flex;
-    justify-content: center;
-} */
-a{
-    margin: 10px;
-    text-decoration: none;
-    color: black;
+body {
+  padding-bottom: 80px;
 }
-.ubicacion{
-    display:block;
+
+
+.footer-icons .nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
