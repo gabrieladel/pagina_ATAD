@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Modal, Button, Table, ButtonGroup } from 'react-bootstrap';
+import { Form , Button, Table, InputGroup } from 'react-bootstrap';
+import "./Crud.css";
 
 const UsuariosCRUD = () => {
   const [usuarios, setNoticias] = useState([]);
@@ -88,32 +89,35 @@ const UsuariosCRUD = () => {
   }, []);
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+    <div className="crud">
       <h2>Gestión de Usuarios</h2>
-
-      <div style={{ marginBottom: "20px" }}>
+      <div className="crud-b">
         <h3>{editando ? "Editar Usuario" : "Nuevo Usuario"}</h3>
-        <input
-          type="text"
-          placeholder="Nombre"
-          value={form.nombre}
-          onChange={(e) => setForm({ ...form, nombre: e.target.value })}
-          style={{ marginRight: "10px", padding: "5px" }}
-        />
-        <input
-          type="text"
-          placeholder="Email"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-          style={{ marginRight: "10px", padding: "5px" }}
-        />
-        <input
-          type="text"
-          placeholder="Rol"
-          value={form.rol}
-          onChange={(e) => setForm({ ...form, rol: e.target.value })}
-          style={{ marginRight: "10px", padding: "5px" }}
-        />
+        <InputGroup className="mb-3">
+          <InputGroup.Text>Nombre</InputGroup.Text>
+          <Form.Control
+            type="text"
+            value={form.nombre}
+            onChange={(e) => setForm({ ...form, nombre: e.target.value })}
+          />
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <InputGroup.Text>Email</InputGroup.Text>
+          <Form.Control
+            type="text"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+          />
+        </InputGroup>
+        <InputGroup className="mb-3">
+          <InputGroup.Text>Rol</InputGroup.Text>
+          <Form.Control
+            type="text"
+            value={form.rol}
+            onChange={(e) => setForm({ ...form, rol: e.target.value })}
+          />
+        </InputGroup>
 
         {editando ? (
           <Button onClick={guardar} variant="outline-primary">
@@ -144,7 +148,7 @@ const UsuariosCRUD = () => {
         <p>No hay usuarios disponibles.</p>
       ) : (
         <Table responsive striped bordered hover>
-          <thead style={{ backgroundColor: "#f0f0f0" }}>
+          <thead>
             <tr>
               <th>ID</th>
               <th>Nombre</th>
@@ -167,12 +171,12 @@ const UsuariosCRUD = () => {
                   </Button>
                   <Button
                     onClick={() => editar(usuario)} variant="outline-success"
-                   >
+                  >
                     Editar
                   </Button>
                   <Button
                     onClick={() => eliminar(usuario.id)}
-                     variant="outline-danger"
+                    variant="outline-danger"
                   >
                     Eliminar
                   </Button>
@@ -184,20 +188,18 @@ const UsuariosCRUD = () => {
         </Table>
       )}
       {viendo && (
-        <div className="modal-overlay">
-         <div className="modal-content-custom">
+        <div className="viendo">
+          <div className="viendo-2">
             <h3>{viendo.nombre}</h3>
             <p><strong>Email:</strong> {viendo.email}</p>
             <p><strong>Rol:</strong> {viendo.rol}</p>
-            
-            <Button onClick={cerrarModal}variant="outline-dark" >
+
+            <Button onClick={cerrarModal} variant="outline-dark" >
               Cerrar
             </Button>
           </div>
         </div>
       )}
-
-
     </div>
 
   );

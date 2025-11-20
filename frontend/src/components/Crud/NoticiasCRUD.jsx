@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from "react-bootstrap/Form";
+import "./Crud.css";
 
 
 
@@ -87,9 +88,9 @@ const NoticiasCRUD = () => {
   }, []);
 
   return (
-    <div>
+    <div className="crud">
       <h2>Gestión de Noticias</h2>
-      <div>
+      <div className="crud-b">
         <h3>{editando ? "Editar Noticia" : "Nueva Noticia"}</h3>
         <InputGroup className="mb-3">
           <InputGroup.Text>Título</InputGroup.Text>
@@ -158,7 +159,7 @@ const NoticiasCRUD = () => {
         <p>No hay noticias disponibles.</p>
       ) : (
         <Table responsive striped bordered hover>
-          <thead style={{ backgroundColor: "#f0f0f0" }}>
+          <thead>
             <tr>
               <th>ID</th>
               <th>Título</th>
@@ -199,28 +200,8 @@ const NoticiasCRUD = () => {
       )}
 
       {viendo && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0,0,0,0.5)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <div
-            style={{
-              background: "#fff",
-              padding: "20px",
-              borderRadius: "8px",
-              width: "400px",
-              boxShadow: "0 0 10px rgba(0,0,0,0.3)",
-            }}
-          >
+        <div className="viendo">
+          <div className="viendo-2">
             <h3>{viendo.titulo}</h3>
             <p><strong>Contenido:</strong> {viendo.contenido}</p>
             <p><strong>Fecha:</strong> {new Date(viendo.fecha).toLocaleDateString("es-AR")}</p>
