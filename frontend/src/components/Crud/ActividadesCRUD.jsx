@@ -4,6 +4,7 @@ import Table from 'react-bootstrap/Table';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from "react-bootstrap/Form";
 import axios from "axios";
+import "./Crud.css";
 
 const ActividadesCRUD = () => {
  const [actividades, setActividades] = useState([]);
@@ -85,39 +86,45 @@ const ActividadesCRUD = () => {
   }, []);
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+    <div className="crud">
       <h2>Gestión de Actividades</h2>
 
-      <div style={{ marginBottom: "20px" }}>
+      <div className="crud-b">
         <h3>{editando ? "Editar Actividad" : "Nueva Actividad"}</h3>
-        <input
-          type="text"
-          placeholder="Título"
-          value={form.titulo}
-          onChange={(e) => setForm({ ...form, titulo: e.target.value })}
-          style={{ marginRight: "10px", padding: "5px" }}
-        />
-        <input
-          type="text"
-          placeholder="Contenido"
-          value={form.contenido}
-          onChange={(e) => setForm({ ...form, contenido: e.target.value })}
-          style={{ marginRight: "10px", padding: "5px", width: "300px" }}
-        />
- <input
-          type="date"
-          placeholder="Fecha"
-          value={form.fecha}
-          onChange={(e) => setForm({ ...form, fecha: e.target.value })}
-          style={{ marginRight: "10px", padding: "5px" }}
-        />
-        <input
-          type="number"
-          placeholder="Usuario"
-          value={form.id_usuario}
-          onChange={(e) => setForm({ ...form, id_usuario: e.target.value })}
-          style={{ marginRight: "10px", padding: "5px", width: "120px" }}
-        />
+        <InputGroup className="mb-3">
+          <InputGroup.Text>Título</InputGroup.Text>
+          <Form.Control
+            type="text"
+            value={form.titulo}
+            onChange={(e) => setForm({ ...form, titulo: e.target.value })}
+          />
+        </InputGroup>
+        <InputGroup className="mb-3">
+          <InputGroup.Text>Contenido</InputGroup.Text>
+          <Form.Control
+            as="textarea"
+            value={form.contenido}
+            onChange={(e) => setForm({ ...form, contenido: e.target.value })}
+          />
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <InputGroup.Text>Fecha</InputGroup.Text>
+          <Form.Control
+            type="date"
+            value={form.fecha}
+            onChange={(e) => setForm({ ...form, fecha: e.target.value })}
+          />
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <InputGroup.Text>Usuario</InputGroup.Text>
+          <Form.Control
+            type="number"
+            value={form.id_usuario}
+            onChange={(e) => setForm({ ...form, id_usuario: e.target.value })}
+          />
+        </InputGroup>
         {editando ? (
           <Button onClick={guardar} variant="outline-success">
             Guardar
@@ -134,8 +141,7 @@ const ActividadesCRUD = () => {
             onClick={() => {
               setEditando(null);
               setForm({ titulo: "", contenido: "", fecha: "", id_usuario: "" });
-            }}
-            
+            }} 
           >
             Cancelar
           </Button>
@@ -148,7 +154,7 @@ const ActividadesCRUD = () => {
         <p>No hay actividades disponibles.</p>
       ) : (
         <Table responsive striped bordered hover>
-          <thead style={{ backgroundColor: "#f0f0f0" }}>
+          <thead>
             <tr>
               <th>ID</th>
               <th>Título</th>
@@ -189,35 +195,13 @@ Ver
       )}
 
       {viendo && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0,0,0,0.5)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <div
-            style={{
-              background: "#fff",
-              padding: "20px",
-              borderRadius: "8px",
-              width: "400px",
-              boxShadow: "0 0 10px rgba(0,0,0,0.3)",
-            }}
-          >
+     <div className="viendo">
+          <div className="viendo-2">
             <h3>{viendo.titulo}</h3>
             <p><strong>Contenido:</strong> {viendo.contenido}</p>
             <p><strong>Fecha:</strong> {new Date(viendo.fecha).toLocaleDateString("es-AR")}</p>
             <p><strong>Usuario:</strong> {viendo.usuario ? viendo.usuario.nombre : "—"}</p>
-            <button onClick={cerrarModal} style={{ marginTop: "10px", padding: "5px 10px" }}>
-              Cerrar
-            </button>
+           <Button variant="outline-secondary" onClick={cerrarModal} >Cerrar</Button>
           </div>
         </div>
       )}
