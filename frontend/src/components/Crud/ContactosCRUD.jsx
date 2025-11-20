@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Form from "react-bootstrap/Form";
+import "./Crud.css";
 
 
 const ContactosCRUD = () => {
@@ -66,7 +65,7 @@ const ContactosCRUD = () => {
   }, []);
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+    <div className="crud">
       <h2>Gestión de Contactos</h2>
       
       {loading ? (
@@ -75,7 +74,7 @@ const ContactosCRUD = () => {
         <p>No hay contactos disponibles.</p>
       ) : (
         <Table responsive striped bordered hover>
-          <thead style={{ backgroundColor: "#f0f0f0" }}>
+          <thead>
             <tr>
               <th>ID</th>
               <th>NOMBRE</th>
@@ -100,8 +99,7 @@ const ContactosCRUD = () => {
               
                   <Button
                     onClick={() => eliminar(contacto.id)}
-                     variant="outline-danger"
-                  >
+                     variant="outline-danger">
                     Eliminar
                   </Button>
                 </td>
@@ -112,35 +110,13 @@ const ContactosCRUD = () => {
       )}
     
       {viendo && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0,0,0,0.5)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <div
-            style={{
-              background: "#fff",
-              padding: "20px",
-              borderRadius: "8px",
-              width: "400px",
-              boxShadow: "0 0 10px rgba(0,0,0,0.3)",
-            }}
-          >
+         <div className="viendo">
+          <div className="viendo-2">
             <h3>{viendo.nombre}</h3>
             <p><strong>Telefono:</strong> {viendo.telefono}</p>
             <p><strong>Email:</strong> {viendo.email}</p>
             <p><strong>Mensaje:</strong> {viendo.mensaje}</p>
-            <button onClick={cerrarModal} style={{ marginTop: "10px", padding: "5px 10px" }}>
-              Cerrar
-            </button>
+           <Button variant="outline-secondary" onClick={cerrarModal} >Cerrar</Button>
           </div>
         </div>
       )}
