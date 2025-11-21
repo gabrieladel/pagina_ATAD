@@ -22,15 +22,6 @@ function ActividadesTimeline() {
     fetchActividades();
   }, []);
 
-  // --- BOTONES DE DESPLAZAMIENTO ---
-  const scrollLeft = () => {
-    timelineRef.current.scrollBy({ left: -300, behavior: "smooth" });
-  };
-
-  const scrollRight = () => {
-    timelineRef.current.scrollBy({ left: 300, behavior: "smooth" });
-  };
-
   if (loading) return <p>Cargando línea de tiempo...</p>;
   if (!actividades.length) return <p>No hay actividades disponibles.</p>;
 

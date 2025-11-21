@@ -1,5 +1,108 @@
+/* ---- CONTENEDOR GENERAL ---- */
+.timeline-wrapper-minimal {
+  width: 100%;
+  max-width: 1400px;
+  margin: 30px auto;
+  padding: 10px 0;
+  position: relative;
+}
+
+/* ---- SCROLL ---- */
+.timeline-horizontal-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.timeline-horizontal-container::-webkit-scrollbar {
+  height: 8px;
+}
+.timeline-horizontal-container::-webkit-scrollbar-thumb {
+  background: #c9c9c9;
+  border-radius: 10px;
+}
+.timeline-horizontal-container::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+/* ---- LÍNEA CONTINUA ---- */
+.timeline-line {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  width: 200%;
+  height: 3px;
+  background: #dcdcdc;
+  z-index: 1;
+}
+
+/* ---- LISTA ---- */
+.timeline-horizontal {
+  display: flex;
+  gap: 60px;
+  padding: 20px;
+  align-items: flex-start;
+}
+
+/* ---- ITEM ---- */
+.timeline-item {
+  text-align: center;
+  position: relative;
+}
+
+/* ---- CÍRCULO ---- */
+.circle {
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border: 3px solid #4a90e2;
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---- TARJETA ---- */
+.card {
+  margin-top: 20px;
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  width: 300px;
+  max-width: 320px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+  text-align: left;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #333;
+ white-space: normal;
+}
+
+.card p {
+  font-size: 14px;
+  color: #666;
+}
+
+.date {
+  display: block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #4a90e2;
+}
+
+
+
+
 /* --- CONTENEDOR GENERAL --- */
-.timeline-wrapper {
+/*.timeline-wrapper {
   position: relative;
   width: 100%;
   margin: 40px auto;
@@ -7,12 +110,12 @@
 }
 
 /* --- SCROLL HORIZONTAL --- */
-.timeline-horizontal-container {
+/*.timeline-horizontal-container {
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
   scroll-behavior: smooth;
-  padding: 10px 35px; /* deja espacio para los botones */
+  padding: 10px 35px; *//* deja espacio para los botones *//*
 }
 
 .timeline-horizontal-container::-webkit-scrollbar {
@@ -24,13 +127,13 @@
   border-radius: 4px;
 }
 
-/* --- FILA --- */
+/* --- FILA --- *//*
 .timeline-horizontal {
-  display: inline-flex;  /* como estaba, pero bien */
+  display: inline-flex; 
   gap: 20px;
 }
 
-/* --- TARJETAS DE ACTIVIDAD --- */
+/* --- TARJETAS DE ACTIVIDAD --- *//*
 .timeline-horizontal-item {
   min-width: 260px;
   max-width: 260px;
@@ -42,8 +145,8 @@
   padding: 15px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 
-  white-space: normal;        /* evita que el texto se salga */
-  overflow-wrap: break-word;  /* corta texto muy largo */
+  white-space: normal;        /* evita que el texto se salga *//*
+  overflow-wrap: break-word;  /* corta texto muy largo *//*
 }
 
 .circle {
@@ -61,7 +164,7 @@
 }
 
 /* --- BOTONES IZQ / DER --- */
-.scroll-btn {
+/*.scroll-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -89,8 +192,8 @@
 }
 
 /* En móviles, ocultamos botones */
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .scroll-btn {
     display: none;
   }
-}
+}*/
