@@ -26,20 +26,16 @@ function ActividadesTimeline() {
   if (!actividades.length) return <p>No hay actividades disponibles.</p>;
 
   return (
-    <div className="timeline-wrapper">
-      
-      {/* Botón IZQUIERDA */}
-      <button className="scroll-btn left" onClick={scrollLeft}>
-        ❮
-      </button>
-
-      {/* Contenedor scroll */}
+    <div className="timeline-wrapper-minimal">
       <div className="timeline-horizontal-container" ref={timelineRef}>
+        <div className="timeline-line"></div>
+
         <div className="timeline-horizontal">
           {actividades.map((act, index) => (
-            <div className="timeline-horizontal-item" key={index}>
+            <div className="timeline-item" key={index}>
               <div className="circle"></div>
-              <div className="content">
+
+              <div className="card">
                 <h3>{act.titulo}</h3>
                 <p>{act.contenido}</p>
                 <span className="date">
@@ -50,15 +46,15 @@ function ActividadesTimeline() {
           ))}
         </div>
       </div>
-
-      {/* Botón DERECHA */}
-      <button className="scroll-btn right" onClick={scrollRight}>
-        ❯
-      </button>
     </div>
   );
 }
 
 export default ActividadesTimeline;
+
+
+
+
+
 
 
