@@ -8,25 +8,25 @@ const sequelize = require('./config/db.config'); // conexión ORM
 const noticiasRoutes = require('./src/routes/noticias.router');
 const usuariosRoutes = require('./src/routes/usuarios.router');
 const actividadesRoutes = require('./src/routes/actividades.router');
-const app = express();
-const jwtSecret = process.env.JWT_SECRET;
 const contactoRoutes = require("./src/routes/contactos.router");
+
 dotenv.config();
 require('dotenv').config();
+const app = express();
+const jwtSecret = process.env.JWT_SECRET;
 
-// Habilita CORS para el frontend
-app.use(cors({
-  origin: 'http://localhost:5173',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
-}));
 app.use(express.json());
+
 app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/noticias', noticiasRoutes);
 app.use('/api/actividades', actividadesRoutes);
 app.use("/api/contactos", contactoRoutes);
-app.use(express.json());
-app.use(cors());
+
+app.use(cors({
+  origin: process.env.CLIENT_URL,   // Railway y Local
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 
 
 const authenticateToken = (req, res, next) => {
@@ -125,6 +125,16 @@ app.post('/login', async (req, res) => {
   }
 });
 
+app.get("/api/test", async (req, res) => {
+  try {
+    await sequelize.authenticate();
+    res.json({ msg: "API funcionando en Railway con Sequelize" });
+  } catch (err) {
+    res.status(500).json({ error: "Error con DB" });
+  }
+});
+
+
 app.get('/dashboard', authenticateToken, (req, res) => {
   if (req.usuario.rol !== 'admin') {
     return res.status(403).json({ message: 'Solo para administradores.' });
@@ -135,5 +145,7 @@ app.get('/dashboard', authenticateToken, (req, res) => {
 sequelize.sync()
   .then(() => console.log('Base de datos sincronizada'))
   .catch(err => console.error('Error al sincronizar la base de datos:', err));
-const PORT = 3000;
+
+  // PORT (Railway usa process.env.PORT)
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));
