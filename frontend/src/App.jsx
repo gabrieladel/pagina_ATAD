@@ -1,7 +1,7 @@
 import "./App.css";
+import "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import React from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
@@ -21,12 +21,13 @@ import ContactoPage from "./pages/ContactoPage";
 function AppContent() {
   const location = useLocation();
 
-  // Si estoy en estas rutas NO muestra el Header y Footer
+  // Si estoy en estas rutas NO muestra el Header
   const hideHeader =
     location.pathname.startsWith("/login") ||
     location.pathname.startsWith("/register") ||
     location.pathname.startsWith("/dashboard");
-
+    
+ // Si estoy en estas rutas NO muestra el Footer
   const hideFooter = location.pathname.startsWith("/dashboard");
 
   return (
@@ -34,7 +35,7 @@ function AppContent() {
       {!hideHeader && <Header />}
 
       <Routes>
-        <Route path="/nosotros" element={<NosotrosPage />} />
+        <Route path="/" element={<NosotrosPage />} />
         <Route path="/proyectos" element={<ProyectosPage />} />
         <Route path="/noticias" element={<NoticiasPage />} />
         <Route path="/actividades" element={<ActividadesPage />} />
