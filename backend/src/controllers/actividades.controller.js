@@ -4,15 +4,20 @@ const Usuario = require('../models/usuarios');
 
 exports.findAll = async (req, res) => {
   try {
-    const actividades = await Actividad.findAll({
-      include: [
-        {
-          model: Usuario,
-          as: 'usuario',
-          attributes: ['nombre'] 
-        }
-      ]
-    });
+const actividades = await Actividad.findAll({
+  include: [
+    {
+      model: Usuario,
+      as: 'usuario',
+      attributes: ['nombre']
+    }
+  ],
+  order: [["fecha", "ASC"]]   // ordena de más antigua → más nueva
+});
+
+
+
+    
     res.json(actividades);
   } catch (error) {
     res.status(500).json({ message: error.message });
