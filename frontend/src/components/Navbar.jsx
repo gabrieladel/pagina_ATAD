@@ -34,7 +34,7 @@ const CustomNavbar = () => {
           <Nav className="me-auto">
             {!isDashboard && (
               <>
-                <Nav.Link as={Link} to="/nosotros" className="text-dark">
+                <Nav.Link as={Link} to="/" className="text-dark">
                   Inicio
                 </Nav.Link>
                 <Nav.Link as={Link} to="/proyectos" className="text-dark">

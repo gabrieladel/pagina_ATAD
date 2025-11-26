@@ -49,7 +49,7 @@ const Dashboard = () => {
               variant="dark"
               size="lg"
               className="px-4"
-              onClick={() => navigate("/nosotros")}
+              onClick={() => navigate("/")}
             >
               Ver Sitio Web
             </Button>
@@ -86,7 +86,7 @@ const Dashboard = () => {
               variant="outline-light"
               size="lg"
               className="px-2"
-              onClick={() => navigate("/nosotros")}
+              onClick={() => navigate("/")}
             >
               Ver Sitio Web
             </Button>
