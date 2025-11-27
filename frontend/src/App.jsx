@@ -68,12 +68,12 @@ function AppContent() {
 
 
 function App() {
-   // 🔹 TEST: comprobar si el backend en Railway responde
+   // TEST: comprobar si el backend en Railway responde
   useEffect(() => {
     axios
       .get("https://paginaatad-production.up.railway.app/")
-      .then(res => console.log("✅ Backend Railway OK:", res.data))
-      .catch(err => console.error("❌ Error backend Railway:", err));
+      .then(res => console.log(" Backend Railway OK:", res.data))
+      .catch(err => console.error(" Error backend Railway:", err));
   }, []);
 
   return (
