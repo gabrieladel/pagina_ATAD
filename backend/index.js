@@ -131,6 +131,10 @@ app.get("/api/test", async (req, res) => {
     res.status(500).json({ error: "Error con DB" });
   }
 });
+app.get("/", (req, res) => {
+  res.send("API funcionando");
+});
+
 
 
 app.get('/dashboard', authenticateToken, (req, res) => {
@@ -146,4 +150,4 @@ sequelize.sync()
 
   // PORT (Railway usa process.env.PORT)
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));
+app.listen(PORT, () => console.log("Servidor en" + PORT));
