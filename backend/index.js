@@ -16,18 +16,16 @@ const app = express();
 const jwtSecret = process.env.JWT_SECRET;
 
 app.use(express.json());
-
-app.use('/api/usuarios', usuariosRoutes);
-app.use('/api/noticias', noticiasRoutes);
-app.use('/api/actividades', actividadesRoutes);
-app.use("/api/contactos", contactoRoutes);
-
 app.use(cors({
   origin: process.env.CLIENT_URL,   // Railway y Local
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
 
+app.use('/api/usuarios', usuariosRoutes);
+app.use('/api/noticias', noticiasRoutes);
+app.use('/api/actividades', actividadesRoutes);
+app.use("/api/contactos", contactoRoutes);
 
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
