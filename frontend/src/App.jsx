@@ -1,5 +1,7 @@
 import "./App.css";
 import "react";
+import { useEffect } from "react";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
@@ -19,6 +21,7 @@ import ActividadesPage from "./pages/ActividadesPage";
 import ContactoPage from "./pages/ContactoPage";
 
 function AppContent() {
+
   const location = useLocation();
 
   // Si estoy en estas rutas NO muestra el Header
@@ -65,6 +68,14 @@ function AppContent() {
 
 
 function App() {
+   // 🔹 TEST: comprobar si el backend en Railway responde
+  useEffect(() => {
+    axios
+      .get("https://paginaatad-production.up.railway.app/")
+      .then(res => console.log("✅ Backend Railway OK:", res.data))
+      .catch(err => console.error("❌ Error backend Railway:", err));
+  }, []);
+
   return (
     <AuthProvider>
       <BrowserRouter>

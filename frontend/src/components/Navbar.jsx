@@ -1,8 +1,9 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { PersonCircle } from "react-bootstrap-icons";
 import imgLogo from "../assets/images/logoAtad.jpg";
-import { Navbar, Nav, Container, Button, NavDropdown } from "react-bootstrap";
+import { BsPerson } from "react-icons/bs";
+
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 
 const CustomNavbar = () => {
   const { usuario, logout } = useAuth();
@@ -59,7 +60,7 @@ const CustomNavbar = () => {
               <NavDropdown
                   title={
                     <span className="d-flex align-items-center">
-                      <PersonCircle size={22} className="text-secondary me-1" />
+                      <BsPerson size={22} className="text-secondary me-1" />
                       <span className="text-secondary">{usuario.nombre}</span>
                     </span>
                   }
