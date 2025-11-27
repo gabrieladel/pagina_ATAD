@@ -18,7 +18,7 @@ const ActividadesCRUD = () => {
   const [viendo, setViendo] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const API_URL = "http://localhost:3000/api/actividades";
+  const API_URL = "https://paginaatad-production.up.railway.app/api/actividades";
 
   const fetchActividades = async () => {
     try {

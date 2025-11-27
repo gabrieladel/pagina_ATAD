@@ -17,7 +17,7 @@ const ContactosCRUD = () => {
   const [viendo, setViendo] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const API_URL = "http://localhost:3000/api/contactos";
+  const API_URL = "https://paginaatad-production.up.railway.app/api/contactos";
 
   const fetchContactos = async () => {
     try {
