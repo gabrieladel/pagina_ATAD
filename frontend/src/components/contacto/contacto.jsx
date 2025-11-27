@@ -65,7 +65,7 @@ const Contacto = () => {
     setCustomErrors({}); 
 
     try {
-      await axios.post("http://localhost:3000/api/contactos", form);
+      await axios.post("https://paginaatad-production.up.railway.app/api/contactos", form);
       setEnviado(true);
       setForm({ nombre: "", telefono: "", email: "", mensaje: "" });
       setValidated(false);     

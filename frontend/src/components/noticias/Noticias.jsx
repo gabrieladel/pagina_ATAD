@@ -9,7 +9,7 @@ const Noticia = () => {
     useEffect(() => {
         const fetchNoticias = async () => {
             try {
-                const res = await axios.get("http://localhost:3000/api/noticias");
+                const res = await axios.get("https://paginaatad-production.up.railway.app/api/noticias");
                 setNoticias(res.data);
             } catch (error) {
                 console.error("Error al obtener noticias:", error);

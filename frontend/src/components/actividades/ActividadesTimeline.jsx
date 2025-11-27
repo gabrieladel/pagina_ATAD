@@ -9,7 +9,7 @@ function ActividadesTimeline() {
   useEffect(() => {
     const fetchActividades = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/actividades");
+        const res = await fetch("https://paginaatad-production.up.railway.app/api/actividades");
         const data = await res.json();
         setActividades(data);
       } catch (error) {
