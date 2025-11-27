@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-import "../actividades/ActividadesTimeline.css";
+import "./ActividadesTimeline.css";
+
 
 
 
