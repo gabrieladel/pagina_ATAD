@@ -11,7 +11,8 @@ exports.findAll = async (req, res) => {
           as: 'usuario',
           attributes: ['nombre'] 
         }
-      ]
+      ],
+       order: [["fecha", "ASC"]]
     });
     res.json(noticias);
   } catch (error) {
