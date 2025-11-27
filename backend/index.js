@@ -10,8 +10,8 @@ const usuariosRoutes = require('./src/routes/usuarios.router');
 const actividadesRoutes = require('./src/routes/actividades.router');
 const contactoRoutes = require("./src/routes/contactos.router");
 
-dotenv.config();
 require('dotenv').config();
+
 const app = express();
 const jwtSecret = process.env.JWT_SECRET;
 
@@ -152,8 +152,9 @@ sequelize.sync()
   .catch(err => console.error('Error al sincronizar la base de datos:', err));
 
   // PORT (Railway usa process.env.PORT)
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 app.listen(PORT, "0.0.0.0", () => {
-  console.log("Servidor escuchando en el puerto " + PORT);
+  console.log(`Servidor escuchando en Railway en el puerto ${PORT}`);
 });
+
 
