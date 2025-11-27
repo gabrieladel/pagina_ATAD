@@ -17,10 +17,10 @@ const jwtSecret = process.env.JWT_SECRET;
 
 app.use(express.json());
 app.use(cors({
-  origin: process.env.CLIENT_URL,   // Railway y Local
+  origin: "*",
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
 }));
+
 
 app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/noticias', noticiasRoutes);
@@ -45,6 +45,9 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
+app.get("/", (req, res) => {
+  res.send("API funcionando");
+});
 
 app.post('/register', async (req, res) => {
   const { nombre, email, password, rol } = req.body;
