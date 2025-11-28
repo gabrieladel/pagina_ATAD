@@ -15,7 +15,15 @@ const app = express();
 const jwtSecret = process.env.JWT_SECRET;
 
 app.use(express.json());
-app.use(cors({ origin: "*", methods: ['GET','POST','PUT','DELETE'] }));
+
+app.use(cors({
+  origin: [
+    "http://localhost:5173",                // para desarrollo local
+    "https://frontend-de-atad-production.up.railway.app/"   // dominio del frontend en producción
+  ],
+  credentials: true
+}));
+
 
 app.get("/", (req, res) => res.send("API funcionando"));
 
