@@ -18,9 +18,10 @@ app.use(express.json());
 
 app.use(cors({
   origin: [
-    "http://localhost:5173",                // para desarrollo local
-    "https://frontend-de-atad-production.up.railway.app/"   // dominio del frontend en producción
+    "http://localhost:5173",
+    "https://frontend-de-atad-production.up.railway.app"
   ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
 

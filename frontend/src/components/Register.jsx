@@ -12,18 +12,15 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setMessage(""); 
+    setMessage("");
 
     try {
-      const response = await fetch("https://paginaatad-production.up.railway.app/register", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nombre,
-          email,
-          password,
-        }),
+        body: JSON.stringify({ nombre, email, password }),
       });
+
 
       const data = await response.json();
 
