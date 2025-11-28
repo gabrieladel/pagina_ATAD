@@ -39,7 +39,7 @@ const Inscripcion = sequelize.define('inscripciones', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: NIvel,  
+      model: Nivel,  
       key: 'id'        
     },
   },
