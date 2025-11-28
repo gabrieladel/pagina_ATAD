@@ -94,10 +94,24 @@ app.use('/api/noticias', noticiasRoutes);
 app.use('/api/actividades', actividadesRoutes);
 app.use('/api/contactos', contactoRoutes);
 
+
+
 // DB
 sequelize.sync({ alter: true })
   .then(() => console.log('Base de datos sincronizada'))
   .catch(err => console.error('Error al sincronizar DB:', err));
+
+const path = require('path');
+
+// Servir frontend
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Redirigir cualquier ruta no API al index.html de React
+app.use((req, res) => {
+  res.status(404).json({ error: "Ruta no encontrada" });
+});
+
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, "0.0.0.0", () =>
