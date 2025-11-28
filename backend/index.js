@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const sequelize = require('./config/db.config');
 const Usuario = require('./src/models/usuarios');
-
+const { Op } = require("sequelize");
 const noticiasRoutes = require('./src/routes/noticias.router');
 const usuariosRoutes = require('./src/routes/usuarios.router');
 const actividadesRoutes = require('./src/routes/actividades.router');
@@ -32,25 +32,33 @@ app.use(cors({
 
 app.get("/", (req, res) => res.send("API funcionando"));
 
+
+// LOGIN
 app.post('/login', async (req, res) => {
   const { nombre, email, password } = req.body;
 
-  const identificador = nombre || email; // lo que venga
+  if (!password || (!nombre && !email)) {
+    return res.status(400).json({ message: "Faltan datos" });
+  }
+
+  const identificador = nombre || email;
 
   try {
     const usuario = await Usuario.findOne({
       where: {
-        [sequelize.Op.or]: [
+        [Op.or]: [
           { nombre: identificador },
           { email: identificador }
         ]
       }
     });
 
-    if (!usuario) return res.status(401).json({ message: "Credenciales incorrectas." });
+    if (!usuario)
+      return res.status(401).json({ message: "Credenciales incorrectas." });
 
     const isMatch = await bcrypt.compare(password, usuario.password);
-    if (!isMatch) return res.status(401).json({ message: "Credenciales incorrectas." });
+    if (!isMatch)
+      return res.status(401).json({ message: "Credenciales incorrectas." });
 
     const token = jwt.sign(
       { id: usuario.id, nombre: usuario.nombre, rol: usuario.rol },
@@ -59,11 +67,13 @@ app.post('/login', async (req, res) => {
     );
 
     res.json({ message: "Login exitoso", token, usuario });
+
   } catch (error) {
     console.error("Error en login:", error);
     res.status(500).json({ message: "Error interno del servidor." });
   }
 });
+
 
 
 // REGISTRO
