@@ -1,0 +1,121 @@
+/* ------- CONTENEDOR PRINCIPAL ------- */
+.inscripciones-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: "Arial", sans-serif;
+}
+
+/* ------- TÍTULO ------- */
+.inscripciones-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+/* ------- FORMULARIO ------- */
+.inscripciones-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.inscripciones-form input,
+.inscripciones-form select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+.inscripciones-form input:focus,
+.inscripciones-form select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 4px #007bff55;
+}
+
+/* ------- INPUTS FULL WIDTH ------- */
+.full-width {
+  grid-column: span 2;
+}
+
+/* ------- BOTÓN ENVIAR ------- */
+.btn-submit {
+  grid-column: span 2;
+  padding: 14px;
+  font-size: 18px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-submit:hover {
+  background: #0056b3;
+}
+
+/* ------- TABLA ------- */
+.table-container {
+  margin-top: 40px;
+  overflow-x: auto;
+}
+
+.inscripciones-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.inscripciones-table th,
+.inscripciones-table td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.inscripciones-table th {
+  background: #007bff;
+  color: white;
+}
+
+.inscripciones-table tr:nth-child(even) {
+  background: #f7f7f7;
+}
+
+/* ------- BOTÓN ELIMINAR ------- */
+.btn-delete {
+  background: #dc3545;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-delete:hover {
+  background: #b52a34;
+}
+
+/* ------- RESPONSIVE ------- */
+@media (max-width: 768px) {
+  .inscripciones-form {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width,
+  .btn-submit {
+    grid-column: span 1;
+  }
+}

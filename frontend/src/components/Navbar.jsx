@@ -47,6 +47,9 @@ const CustomNavbar = () => {
                 <Nav.Link as={Link} to="/actividades" className="text-dark">
                   Actividades
                 </Nav.Link>
+                <Nav.Link as={Link} to="/inscripciones" className="text-dark">
+                  Inscripciones
+                </Nav.Link>
                 <Nav.Link as={Link} to="/contacto" className="text-dark">
                   Contacto
                 </Nav.Link>

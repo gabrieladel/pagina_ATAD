@@ -19,6 +19,7 @@ import ProyectosPage from "./pages/ProyectosPage";
 import NoticiasPage from "./pages/NoticiasPage";
 import ActividadesPage from "./pages/ActividadesPage";
 import ContactoPage from "./pages/ContactoPage";
+import InscripcionesPage from "./pages/InscripcionesPage";
 
 function AppContent() {
 
@@ -43,6 +44,7 @@ function AppContent() {
         <Route path="/noticias" element={<NoticiasPage />} />
         <Route path="/actividades" element={<ActividadesPage />} />
         <Route path="/contacto" element={<ContactoPage />} />
+        <Route path="/inscripciones" element={<InscripcionesPage />} />
 
         {/* AUTH */}
         <Route path="/login" element={<Login />} />
