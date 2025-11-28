@@ -22,6 +22,7 @@ app.get("/", (req, res) => res.send("API funcionando"));
 // LOGIN
 app.post('/login', async (req, res) => {
   const { nombre, password } = req.body;
+  console.log("BODY:", req.body);
   if (!nombre || !password) return res.status(400).json({ message: 'Faltan datos.' });
 
   try {
