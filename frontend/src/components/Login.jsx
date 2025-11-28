@@ -5,7 +5,7 @@ import Register from './Register';
 
 
 const Login = () => {
-  const [nombre, setNombre] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const { login } = useAuth();
@@ -17,7 +17,7 @@ const Login = () => {
       const response = await fetch(`${import.meta.env.VITE_API_URL}login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nombre, password }),
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
@@ -42,14 +42,14 @@ const Login = () => {
 
           <div className="form-floating">
             <input
-              value={nombre}
+              value={email}
               className="form-control"
               id="floatingInput"
-              placeholder="name"
-              onChange={(e) => setNombre(e.target.value)}
+              placeholder="email"
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <label htmlFor="floatingInput">Nombre de usuario</label>
+            <label htmlFor="floatingInput">Email de usuario</label>
           </div>
 
           <div className="form-floating">

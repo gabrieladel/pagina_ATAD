@@ -32,20 +32,18 @@ app.use(cors({
 
 app.get("/", (req, res) => res.send("API funcionando"));
 
+// LOGIN
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
-
-  if (!email || !password)
-    return res.status(400).json({ message: 'Faltan datos.' });
+  console.log("BODY:", req.body);
+  if (!email || !password) return res.status(400).json({ message: 'Faltan datos.' });
 
   try {
-    const usuario = await Usuario.findOne({ where: { email } });
-    if (!usuario)
-      return res.status(401).json({ message: 'Credenciales incorrectas.' });
+    const usuario = await Usuario.findOne({ where: { nombre } });
+    if (!usuario) return res.status(401).json({ message: 'Credenciales incorrectas.' });
 
     const isMatch = await bcrypt.compare(password, usuario.password);
-    if (!isMatch)
-      return res.status(401).json({ message: 'Credenciales incorrectas.' });
+    if (!isMatch) return res.status(401).json({ message: 'Credenciales incorrectas.' });
 
     const token = jwt.sign(
       { id: usuario.id, nombre: usuario.nombre, rol: usuario.rol },
@@ -63,7 +61,6 @@ app.post('/login', async (req, res) => {
         rol: usuario.rol,
       },
     });
-
   } catch (error) {
     console.error('Error en login:', error);
     res.status(500).json({ message: 'Error interno del servidor.' });
