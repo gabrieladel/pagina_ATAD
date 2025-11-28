@@ -32,40 +32,39 @@ app.use(cors({
 
 app.get("/", (req, res) => res.send("API funcionando"));
 
-// LOGIN
 app.post('/login', async (req, res) => {
-  const { email, password } = req.body;
-  console.log("BODY:", req.body);
-  if (!email || !password) return res.status(400).json({ message: 'Faltan datos.' });
+  const { nombre, email, password } = req.body;
+
+  const identificador = nombre || email; // lo que venga
 
   try {
-    const usuario = await Usuario.findOne({ where: { nombre } });
-    if (!usuario) return res.status(401).json({ message: 'Credenciales incorrectas.' });
+    const usuario = await Usuario.findOne({
+      where: {
+        [sequelize.Op.or]: [
+          { nombre: identificador },
+          { email: identificador }
+        ]
+      }
+    });
+
+    if (!usuario) return res.status(401).json({ message: "Credenciales incorrectas." });
 
     const isMatch = await bcrypt.compare(password, usuario.password);
-    if (!isMatch) return res.status(401).json({ message: 'Credenciales incorrectas.' });
+    if (!isMatch) return res.status(401).json({ message: "Credenciales incorrectas." });
 
     const token = jwt.sign(
       { id: usuario.id, nombre: usuario.nombre, rol: usuario.rol },
       jwtSecret,
-      { expiresIn: '1h' }
+      { expiresIn: "1h" }
     );
 
-    res.status(200).json({
-      message: 'Login exitoso',
-      token,
-      usuario: {
-        id: usuario.id,
-        nombre: usuario.nombre,
-        email: usuario.email,
-        rol: usuario.rol,
-      },
-    });
+    res.json({ message: "Login exitoso", token, usuario });
   } catch (error) {
-    console.error('Error en login:', error);
-    res.status(500).json({ message: 'Error interno del servidor.' });
+    console.error("Error en login:", error);
+    res.status(500).json({ message: "Error interno del servidor." });
   }
 });
+
 
 // REGISTRO
 app.post('/register', async (req, res) => {
