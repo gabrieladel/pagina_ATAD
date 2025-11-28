@@ -3,7 +3,7 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <footer className="custom-footer text-light py-2 fixed-bottom footer">
+    <footer className="custom-footer text-light py- footer">
       <Container>
         <Row className="text-center justify-content-center">
           <Col md={12} className="d-flex flex-column align-items-center gap-2"> 

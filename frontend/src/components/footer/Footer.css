@@ -1,14 +1,12 @@
 .custom-footer {
   background: #0c2b47;
-  position: fixed;
   bottom: 0;
   width: 100%;
-  padding: 10px 0;
   z-index: 1000;
 }
 
 .footer{
-  padding-bottom: 80px;
+  padding-bottom: 10px;
 }
 
 
