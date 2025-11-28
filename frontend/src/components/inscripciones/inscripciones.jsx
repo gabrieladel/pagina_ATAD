@@ -1,11 +1,7 @@
-import { useState } from "react";
-import { Form, Button, Alert, Row, Col, InputGroup } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { Form, Button, Alert, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import "./inscripciones.css";
-
-// Validación
-const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const TELEFONO_LONGITUD_REQUERIDA = 10;
 
 const Inscripciones = () => {
   const [form, setForm] = useState({
@@ -17,56 +13,52 @@ const Inscripciones = () => {
     domicilio: "",
     id_nivel: "",
     id_prepaga: "",
-    telefono: "",
-    email: "",
-    mensaje: "",
   });
 
   const [validated, setValidated] = useState(false);
   const [enviado, setEnviado] = useState(false);
-  const [customErrors, setCustomErrors] = useState({});
 
+  // Datos de BD
+  const [niveles, setNiveles] = useState([]);
+  const [prepagas, setPrepagas] = useState([]);
+
+  // Cargar niveles y prepagas desde backend
+  useEffect(() => {
+    axios
+      .get("https://paginaatad-production.up.railway.app/api/niveles")
+      .then((res) => setNiveles(res.data))
+      .catch((err) => console.error("Error cargando niveles:", err));
+
+    axios
+      .get("https://paginaatad-production.up.railway.app/api/prepagas")
+      .then((res) => setPrepagas(res.data))
+      .catch((err) => console.error("Error cargando prepagas:", err));
+  }, []);
+
+  // Manejar cambios en inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     let newValue = value;
-
-    if (customErrors[name]) {
-      setCustomErrors({ ...customErrors, [name]: "" });
-    }
-
-    if (name === "telefono" || name === "dni" || name === "edad") {
-      newValue = value.replace(/\D/g, "");
+    if (name === "dni" || name === "edad") {
+      newValue = value.replace(/\D/g, ""); // solo números
     }
 
     setForm({ ...form, [name]: newValue });
   };
 
+  // Enviar formulario
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formElement = event.currentTarget;
-    let validacionManual = true;
-    const newCustomErrors = {};
 
-    if (form.email && !EMAIL_REGEX.test(form.email)) {
-      newCustomErrors.email = "El email debe tener formato usuario@dominio.com";
-      validacionManual = false;
-    }
-
-    if (form.telefono && form.telefono.length !== TELEFONO_LONGITUD_REQUERIDA) {
-      newCustomErrors.telefono = `El teléfono debe tener exactamente ${TELEFONO_LONGITUD_REQUERIDA} dígitos.`;
-      validacionManual = false;
-    }
-
-    // Validación bootstrap
-    if (formElement.checkValidity() === false || !validacionManual) {
+    if (formElement.checkValidity() === false) {
       event.stopPropagation();
       setValidated(true);
-      setCustomErrors(newCustomErrors);
       return;
     }
 
     setValidated(true);
-    setCustomErrors({});
 
     try {
       await axios.post(
@@ -85,9 +77,6 @@ const Inscripciones = () => {
         domicilio: "",
         id_nivel: "",
         id_prepaga: "",
-        telefono: "",
-        email: "",
-        mensaje: "",
       });
 
       setValidated(false);
@@ -101,6 +90,7 @@ const Inscripciones = () => {
       <h2>Formulario de Inscripción</h2>
 
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        {/* Nombre y Apellido */}
         <Row className="mb-3">
           <Form.Group as={Col} md="6">
             <Form.Label>Nombre</Form.Label>
@@ -153,7 +143,7 @@ const Inscripciones = () => {
         {/* DNI - Domicilio */}
         <Row className="mb-3">
           <Form.Group as={Col} md="6">
-            <Form.Label>dni</Form.Label>
+            <Form.Label>DNI</Form.Label>
             <Form.Control
               required
               type="text"
@@ -186,10 +176,12 @@ const Inscripciones = () => {
               value={form.id_nivel}
               onChange={handleChange}
             >
-              <option value="">ATDI</option>
-              <option value="1">Inicial</option>
-              <option value="2">Primaria</option>
-              <option value="3">CFI</option>
+              <option value="">Seleccione nivel</option>
+              {niveles.map((n) => (
+                <option key={n.id} value={n.id}>
+                  {n.nombre}
+                </option>
+              ))}
             </Form.Control>
           </Form.Group>
 
@@ -202,72 +194,23 @@ const Inscripciones = () => {
               value={form.id_prepaga}
               onChange={handleChange}
             >
-              <option value="">Seleccionar prepaga</option>
-              <option value="1">OSDE</option>
-              <option value="2">Swiss Medical</option>
-              <option value="3">Omint</option>
+              <option value="">Seleccione prepaga</option>
+              {prepagas.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {p.nombre}
+                </option>
+              ))}
             </Form.Control>
           </Form.Group>
         </Row>
 
-        {/* Teléfono */}
-        <Row className="mb-3">
-          <Form.Group as={Col} md="6">
-            <Form.Label>Teléfono</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              name="telefono"
-              value={form.telefono}
-              onChange={handleChange}
-              isInvalid={validated && customErrors.telefono}
-            />
-            <Form.Control.Feedback type="invalid">
-              {customErrors.telefono}
-            </Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group as={Col} md="6">
-            <Form.Label>Email</Form.Label>
-            <InputGroup>
-              <InputGroup.Text>@</InputGroup.Text>
-              <Form.Control
-                required
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                isInvalid={validated && customErrors.email}
-              />
-              <Form.Control.Feedback type="invalid">
-                {customErrors.email}
-              </Form.Control.Feedback>
-            </InputGroup>
-          </Form.Group>
-        </Row>
-
-        {/* Mensaje */}
-        <Form.Group className="mb-3">
-          <Form.Label>Mensaje</Form.Label>
-          <Form.Control
-            required
-            as="textarea"
-            rows={4}
-            name="mensaje"
-            value={form.mensaje}
-            onChange={handleChange}
-          />
-        </Form.Group>
-
         <Button variant="primary" type="submit">
-          Enviar Inscripción
+          Enviar
         </Button>
       </Form>
 
       {enviado && (
-        <Alert variant="success" className="inscripcion-exito">
-          ✅ Inscripción enviada correctamente.
-        </Alert>
+        <Alert variant="success">✅ Inscripción enviada correctamente.</Alert>
       )}
     </div>
   );

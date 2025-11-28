@@ -11,7 +11,10 @@ const Prepaga = sequelize.define('prepagas', {
   nombre: {
     type: DataTypes.STRING(100),
     allowNull: false
-  }
+  }}
+  ,{
+  timestamps: false,
+  tableName: 'prepagas'  
 });
   
 module.exports = Prepaga;

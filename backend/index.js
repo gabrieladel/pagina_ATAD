@@ -10,6 +10,10 @@ const noticiasRoutes = require('./src/routes/noticias.router');
 const usuariosRoutes = require('./src/routes/usuarios.router');
 const actividadesRoutes = require('./src/routes/actividades.router');
 const contactoRoutes = require("./src/routes/contactos.router");
+const inscripcionesRoutes = require ('./src/routes/inscripciones.router');
+const nivelesRoutes = require('./src/routes/niveles.router');
+const prepagasRoutes = require('./src/routes/prepagas.router');
+
 
 const app = express();
 const jwtSecret = process.env.JWT_SECRET;
@@ -103,6 +107,9 @@ app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/noticias', noticiasRoutes);
 app.use('/api/actividades', actividadesRoutes);
 app.use('/api/contactos', contactoRoutes);
+app.use('/api/inscripciones', inscripcionesRoutes);
+app.use('/api/niveles', nivelesRoutes);
+app.use('/api/prepagas', prepagasRoutes);
 
 
 
