@@ -13,7 +13,7 @@ const Inscripciones = () => {
     apellido: "",
     edad: "",
     fecha_nacimiento: "",
-    DNI: "",
+    dni: "",
     domicilio: "",
     id_nivel: "",
     id_prepaga: "",
@@ -34,7 +34,7 @@ const Inscripciones = () => {
       setCustomErrors({ ...customErrors, [name]: "" });
     }
 
-    if (name === "telefono" || name === "DNI" || name === "edad") {
+    if (name === "telefono" || name === "dni" || name === "edad") {
       newValue = value.replace(/\D/g, "");
     }
 
@@ -81,7 +81,7 @@ const Inscripciones = () => {
         apellido: "",
         edad: "",
         fecha_nacimiento: "",
-        DNI: "",
+        dni: "",
         domicilio: "",
         id_nivel: "",
         id_prepaga: "",
@@ -153,12 +153,12 @@ const Inscripciones = () => {
         {/* DNI - Domicilio */}
         <Row className="mb-3">
           <Form.Group as={Col} md="6">
-            <Form.Label>DNI</Form.Label>
+            <Form.Label>dni</Form.Label>
             <Form.Control
               required
               type="text"
-              name="DNI"
-              value={form.DNI}
+              name="dni"
+              value={form.dni}
               onChange={handleChange}
             />
           </Form.Group>
@@ -186,10 +186,10 @@ const Inscripciones = () => {
               value={form.id_nivel}
               onChange={handleChange}
             >
-              <option value="">Seleccionar nivel</option>
+              <option value="">ATDI</option>
               <option value="1">Inicial</option>
               <option value="2">Primaria</option>
-              <option value="3">Secundaria</option>
+              <option value="3">CFI</option>
             </Form.Control>
           </Form.Group>
 
