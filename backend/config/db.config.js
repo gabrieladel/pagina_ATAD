@@ -1,5 +1,5 @@
-const { Sequelize } = require('sequelize');
 require('dotenv').config();
+const { Sequelize } = require('sequelize');
 
 const sequelize = process.env.MYSQL_URL
   ? new Sequelize(process.env.MYSQL_URL, { dialect: 'mysql', logging: false })

@@ -7,18 +7,19 @@ import Register from './Register';
 const Login = () => {
   const [nombre, setNombre] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState(''); 
+  const [message, setMessage] = useState('');
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://paginaatad-production.up.railway.app/login', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nombre, password }),
       });
+
       const data = await response.json();
 
       if (response.ok) {
@@ -82,7 +83,7 @@ const Login = () => {
 
           {message && <p className="text-danger mt-3">{message}</p>}
 
-        
+
           <div className="mt-3 text-center">
             <span>¿No tienes cuenta? </span>
             <Link to="/register" className="btn btn-link p-0">

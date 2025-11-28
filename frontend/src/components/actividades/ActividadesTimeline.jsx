@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import "./ActividadesTimeline.css";
+import "./Actividades.css";
 
 function ActividadesTimeline() {
   const [actividades, setActividades] = useState([]);
