@@ -27,26 +27,8 @@ export default function Nosotros() {
           <p className="niveles">
             Abarca los niveles: <strong>ATDI – Inicial – Primario – CFI</strong>
           </p>
-
-          <button className="banner-btn" onClick={() => setIsOpen(true)}>
-            Conocer Historia
-          </button>
         </div>
       </div>
-
-      {/* --- MODAL --- */}
-      {isOpen && (
-        <PortalExample onClose={() => setIsOpen(false)}>
-          <h2>Historia de la Institución</h2>
-          <p>
-            ATAD nació con el compromiso de acompañar, educar y brindar oportunidades
-            a personas con discapacidad, promoviendo su desarrollo integral y la 
-            inclusión social. A lo largo de los años, la institución ha crecido en 
-            infraestructura, programas educativos y proyectos comunitarios, 
-            consolidándose como un referente en la región.
-          </p>
-        </PortalExample>
-      )}
     </section>
   );
 }
