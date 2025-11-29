@@ -14,7 +14,8 @@ export default function PortalExample({ children, onClose }) {
 
       </div>
     </div>,
-    document.body
+    document.getElementById("modal-root")
+
   );
 }
 
