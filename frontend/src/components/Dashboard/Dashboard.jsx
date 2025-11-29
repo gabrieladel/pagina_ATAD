@@ -6,9 +6,11 @@ import NoticiasCRUD from "../Crud/NoticiasCRUD";
 import ActividadesCRUD from "../Crud/ActividadesCRUD";
 import UsuariosCRUD from "../Crud/UsuariosCRUD";
 import ContactosCRUD from "../Crud/ContactosCRUD";
+import InscripcionesCRUD from "../Crud/InscripcionesCRUD";
 import imgLogo from "../../assets/images/logoAtad.jpg";
 import "./Dashboard.css";
 import {IoMenu, IoHomeSharp, IoNewspaperSharp, IoCalendarClearSharp, IoPeopleSharp, IoMailOpen } from "react-icons/io5";
+import InscripcionesCRUD from "../Crud/InscripcionesCRUD";
 
 
 const Dashboard = () => {
@@ -32,6 +34,8 @@ const Dashboard = () => {
         return <UsuariosCRUD />;
       case "contactos":
         return <ContactosCRUD />;
+      case "instrucciones":
+        return <InscripcionesCRUD />;
       default:
         return (
           <div className="card-logo text-center mt-5 p-4"
