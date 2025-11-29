@@ -51,6 +51,8 @@ const Inscripcion = sequelize.define('inscripciones', {
       key: 'id'        
     },
   },
+   }, {
+  timestamps: false
 });
 
 // Relaciones
