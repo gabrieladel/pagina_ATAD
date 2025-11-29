@@ -171,6 +171,7 @@ const Inscripciones = () => {
               required
               as="select"
               name="id_nivel"
+              type="number"
               value={form.id_nivel}
               onChange={handleChange}
             >
@@ -189,6 +190,7 @@ const Inscripciones = () => {
               required
               as="select"
               name="id_prepaga"
+              type="number"
               value={form.id_prepaga}
               onChange={handleChange}
             >
