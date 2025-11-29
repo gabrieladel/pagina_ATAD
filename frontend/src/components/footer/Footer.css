@@ -1,18 +1,24 @@
-.custom-footer {
-  background: #0c2b47;
-  bottom: 0;
-  width: 100%;
-  z-index: 1000;
+.footer-bg {
+  background-color:#0c2b47;
 }
 
-.footer{
-  padding-bottom: 10px;
+.footer-icon {
+  font-size: 1.2rem;
+  margin-right: 8px;
+  color: #78b4e5;
 }
 
-
-.footer-icons .nav-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.footer-social {
+  font-size: 1.8rem;
+  color: #84d0ef;
+  transition: 0.3s ease;
 }
 
+.footer-social:hover {
+  color: #ffffff;
+  transform: scale(1.15);
+}
+
+footer{
+  color: #ffffff;
+}

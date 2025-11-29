@@ -22,49 +22,54 @@ import ContactoPage from "./pages/ContactoPage";
 import InscripcionesPage from "./pages/InscripcionesPage";
 
 function AppContent() {
-
   const location = useLocation();
-
-  // Si estoy en estas rutas NO muestra el Header
+  
   const hideHeader =
     location.pathname.startsWith("/login") ||
     location.pathname.startsWith("/register") ||
     location.pathname.startsWith("/dashboard");
-    
- // Si estoy en estas rutas NO muestra el Footer
-  const hideFooter = location.pathname.startsWith("/dashboard");
+
+  const hideFooter =
+    location.pathname.startsWith("/login") ||
+    location.pathname.startsWith("/register") ||
+    location.pathname.startsWith("/dashboard");
+
 
   return (
-    <>
+    <div className="app-wrapper">
+      
       {!hideHeader && <Header />}
 
-      <Routes>
-        <Route path="/" element={<NosotrosPage />} />
-        <Route path="/proyectos" element={<ProyectosPage />} />
-        <Route path="/noticias" element={<NoticiasPage />} />
-        <Route path="/actividades" element={<ActividadesPage />} />
-        <Route path="/contacto" element={<ContactoPage />} />
-        <Route path="/inscripciones" element={<InscripcionesPage />} />
+      <div className="app-content">
+        <Routes>
+          <Route path="/" element={<NosotrosPage />} />
+          <Route path="/proyectos" element={<ProyectosPage />} />
+          <Route path="/noticias" element={<NoticiasPage />} />
+          <Route path="/actividades" element={<ActividadesPage />} />
+          <Route path="/contacto" element={<ContactoPage />} />
+          <Route path="/inscripciones" element={<InscripcionesPage />} />
 
-        {/* AUTH */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+          {/* AUTH */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
-        {/* DASHBOARD */}
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute requireAdmin={true}>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
+          {/* DASHBOARD */}
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute requireAdmin={true}>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route path="*" element={<h1>404 - Página no encontrada</h1>} />
-      </Routes>
+          <Route path="*" element={<h1>404 - Página no encontrada</h1>} />
+        </Routes>
+      </div>
 
       {!hideFooter && <Footer />}
-    </>
+
+    </div>
   );
 }
 

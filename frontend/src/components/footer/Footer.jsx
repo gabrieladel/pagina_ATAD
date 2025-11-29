@@ -1,46 +1,62 @@
-import { Container, Row, Col, Nav } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import {
+  IoLogoFacebook,
+  IoLogoInstagram,
+  IoMailOutline,
+  IoCallOutline,
+  IoLocationOutline
+} from "react-icons/io5";
+
 import "./Footer.css";
 
 function Footer() {
   return (
-    <footer className="custom-footer text-light py- footer">
+    <footer className="footer-bg text-light py-4 mt-5">
       <Container>
-        <Row className="text-center justify-content-center">
-          <Col md={12} className="d-flex flex-column align-items-center gap-2"> 
-            <Nav className="gap-3 fs-4 footer-icons">
-              <Nav.Link href="https://www.facebook.com/profile.php?id=100057622172867" target="_blank" className="text-light">
-                <i className="bi bi-facebook"></i>
-              </Nav.Link>
+        
+        <Row className="text-center text-md-start mb-4">
 
-              <Nav.Link href="https://www.instagram.com/atad1963/" target="_blank" className="text-light">
-                <i className="bi bi-instagram"></i>
-              </Nav.Link>
-
-           {/*    <Nav.Link href="https://www.facebook.com/groups/614288792001824" target="_blank" className="text-light">
-                <i className="bi bi-whatsapp"></i>
-              </Nav.Link> */}
-
-              <Nav.Link href="mailto:atad1963@gmail.com" target="_blank" className="text-light">
-                <i className="bi bi-envelope-at"></i>
-              </Nav.Link>
-            </Nav>
-            <p className="mb-0 d-flex align-items-center justify-content-center text-light">
-              <i className="bi bi-geo-alt me-2"></i>
-              Cnel. Brandsen 498, Tandil, Buenos Aires
+          {/* Logo + descripción */}
+          <Col md={4} className="mb-3">
+            <h4 className="fw-bold">ATAD</h4>
+            <p>
+              Centro de asistencia donde trabajamos para mejorar la calidad de vida
+              de niños, jóvenes y adultos con discapacidad.
             </p>
-            <p className="mb-0 d-flex align-items-center justify-content-center text-light">
-              <i className="bi bi-telephone me-2">
-              </i>
-              249 438-8507
-            </p>
+          </Col>
 
+          {/* Contacto */}
+          <Col md={4} className="mb-3">
+            <h5 className="fw-bold mb-3">Contacto</h5>
+            <p><IoLocationOutline className="footer-icon" /> Cnel. Brandsen 498, Tandil, Buenos Aires</p>
+            <p><IoCallOutline className="footer-icon" /> +54 249 438-8507</p>
+            <p><IoMailOutline className="footer-icon" /> atad1963@gmail.com</p>
+          </Col>
+
+          {/* Redes sociales */}
+          <Col md={3} className="mb-3">
+            <h5 className="fw-bold mb-3">Seguinos</h5>
+            <div className="d-flex gap-3 justify-content-center justify-content-md-start">
+              <a href="https://www.facebook.com/people/ATAD/100057622172867/" className="footer-social">
+                <IoLogoFacebook />
+              </a>
+              <a href="https://www.instagram.com/atad1963/" className="footer-social">
+                <IoLogoInstagram />
+              </a>
+             
+            </div>
+          </Col>
+
+        </Row>
+
+        {/* Línea inferior */}
+        <Row>
+          <Col className="text-center pt-3 border-top border-secondary">
+            <p className="m-0">&copy; 2025 ATAD - Todos los derechos reservados</p>
           </Col>
         </Row>
-      </Container>
 
-      <div className="footer-copy text-center py-2 small mt-2 border-top border-light">
-        © {new Date().getFullYear()} ATAD — Todos los derechos reservados
-      </div>
+      </Container>
     </footer>
   );
 }
