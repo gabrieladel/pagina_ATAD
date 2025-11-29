@@ -62,9 +62,7 @@ const Inscripciones = () => {
 
     try {
       await axios.post(
-        "https://paginaatad-production.up.railway.app/api/inscripciones",
-        form
-      );
+       "https://paginaatad-production.up.railway.app/api/inscripciones", form);
 
       setEnviado(true);
 
