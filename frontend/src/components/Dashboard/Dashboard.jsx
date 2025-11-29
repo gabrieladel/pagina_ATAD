@@ -34,7 +34,7 @@ const Dashboard = () => {
         return <UsuariosCRUD />;
       case "contactos":
         return <ContactosCRUD />;
-      case "instrucciones":
+      case "inscripciones":
         return <InscripcionesCRUD />;
       default:
         return (
