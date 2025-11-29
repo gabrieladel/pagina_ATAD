@@ -94,6 +94,8 @@ const Dashboard = () => {
             >
               Ver Sitio Web
             </Button>
+            </Nav>
+            <Nav className="ms-auto">
             <Button
               variant="outline-light"
               onClick={() => {
