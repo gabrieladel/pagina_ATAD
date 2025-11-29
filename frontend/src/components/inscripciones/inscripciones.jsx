@@ -40,8 +40,10 @@ const Inscripciones = () => {
     const { name, value } = e.target;
 
     let newValue = value;
+
+    // Aceptar solo números en dni y edad
     if (name === "dni" || name === "edad") {
-      newValue = value.replace(/\D/g, ""); // solo números
+      newValue = value.replace(/\D/g, "");
     }
 
     setForm({ ...form, [name]: newValue });
@@ -60,12 +62,42 @@ const Inscripciones = () => {
 
     setValidated(true);
 
+    // Validación manual adicional
+    if (
+      !form.nombre ||
+      !form.apellido ||
+      !form.edad ||
+      !form.fecha_nacimiento ||
+      !form.dni ||
+      !form.domicilio ||
+      !form.id_nivel ||
+      !form.id_prepaga
+    ) {
+      alert("⚠️ Complete todos los campos antes de enviar.");
+      return;
+    }
+
+    // Conversión segura antes de enviar al backend
+    const data = {
+      nombre: form.nombre,
+      apellido: form.apellido,
+      edad: Number(form.edad),
+      fecha_nacimiento: form.fecha_nacimiento,
+      dni: Number(form.dni),
+      domicilio: form.domicilio,
+      id_nivel: Number(form.id_nivel),
+      id_prepaga: Number(form.id_prepaga),
+    };
+
     try {
       await axios.post(
-       "https://paginaatad-production.up.railway.app/api/inscripciones", form);
+        "https://paginaatad-production.up.railway.app/api/inscripciones",
+        data
+      );
 
       setEnviado(true);
 
+      // Reset
       setForm({
         nombre: "",
         apellido: "",
@@ -79,7 +111,8 @@ const Inscripciones = () => {
 
       setValidated(false);
     } catch (error) {
-      console.error("Error al enviar inscripción:", error);
+      console.error("Error al enviar inscripción:", error.response?.data || error);
+      alert("❌ Error al enviar la inscripción. Revisá la consola.");
     }
   };
 
@@ -171,7 +204,6 @@ const Inscripciones = () => {
               required
               as="select"
               name="id_nivel"
-              type="number"
               value={form.id_nivel}
               onChange={handleChange}
             >
@@ -190,7 +222,6 @@ const Inscripciones = () => {
               required
               as="select"
               name="id_prepaga"
-              type="number"
               value={form.id_prepaga}
               onChange={handleChange}
             >
@@ -210,10 +241,13 @@ const Inscripciones = () => {
       </Form>
 
       {enviado && (
-        <Alert variant="success">✅ Inscripción enviada correctamente.</Alert>
+        <Alert variant="success" className="mt-3">
+          ✅ Inscripción enviada correctamente.
+        </Alert>
       )}
     </div>
   );
 };
 
 export default Inscripciones;
+
