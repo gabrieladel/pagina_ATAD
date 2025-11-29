@@ -21,15 +21,15 @@ const Contacto = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     let newValue = value;
-    
+
     // Limpia el error personalizado al escribir
     if (customErrors[name]) {
-        setCustomErrors({ ...customErrors, [name]: "" });
+      setCustomErrors({ ...customErrors, [name]: "" });
     }
 
     // Filtra el "telefono" para aceptar solo numeros
     if (name === "telefono") {
-      newValue = value.replace(/\D/g, ''); 
+      newValue = value.replace(/\D/g, '');
     }
 
     setForm({ ...form, [name]: newValue });
@@ -43,14 +43,14 @@ const Contacto = () => {
 
     // Valida Email 
     if (form.email && !EMAIL_REGEX.test(form.email)) {
-        newCustomErrors.email = "El email debe tener el formato: usuario@dominio.com";
-        validacionManual = false;
+      newCustomErrors.email = "El email debe tener el formato: usuario@dominio.com";
+      validacionManual = false;
     }
-    
+
     // Valida Longitud del Teléfono
     if (form.telefono && form.telefono.length !== TELEFONO_LONGITUD_REQUERIDA) {
-        newCustomErrors.telefono = `El teléfono debe tener exactamente ${TELEFONO_LONGITUD_REQUERIDA} dígitos.`;
-        validacionManual = false;
+      newCustomErrors.telefono = `El teléfono debe tener exactamente ${TELEFONO_LONGITUD_REQUERIDA} dígitos.`;
+      validacionManual = false;
     }
 
     // Validación de Bootstrap
@@ -62,19 +62,24 @@ const Contacto = () => {
     }
 
     setValidated(true);
-    setCustomErrors({}); 
+    setCustomErrors({});
 
     try {
-      await axios.post("https://paginaatad-production.up.railway.app/api/contactos", form);
-      setEnviado(true);
-      setForm({ nombre: "", telefono: "", email: "", mensaje: "" });
-      setValidated(false);     
-      setCustomErrors({});
+      const res = await axios.post("https://paginaatad-production.up.railway.app/api/contactos", form);
+      if (res.status === 201) {
+        setEnviado(true);
+        setForm({ nombre: "", telefono: "", email: "", mensaje: "" });
+        setValidated(false);
+        setCustomErrors({});
+      } else {
+        console.error("Error al enviar mensaje:", res.data.message);
+      }
     } catch (error) {
-      console.error("Error al enviar mensaje:", error);
+      console.error("Error al enviar mensaje:", error.response?.data || error.message);
     }
+
   };
-  
+
 
   return (
     <div style={{ padding: "20px" }}>
@@ -106,11 +111,11 @@ const Contacto = () => {
               placeholder="Tu teléfono (solo números)"
               value={form.telefono}
               onChange={handleChange}
-              pattern="[0-9]{10}" 
-              isInvalid={validated && customErrors.telefono} 
+              pattern="[0-9]{10}"
+              isInvalid={validated && customErrors.telefono}
             />
             <Form.Control.Feedback type="invalid">
-                {customErrors.telefono || "Solo se permiten números."}
+              {customErrors.telefono || "Solo se permiten números."}
             </Form.Control.Feedback>
           </Form.Group>
         </Row>
