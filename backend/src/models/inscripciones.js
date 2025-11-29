@@ -24,8 +24,8 @@ const Inscripcion = sequelize.define('inscripciones', {
     allowNull: false
   },
   fecha_nacimiento: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
+    type: DataTypes.DATEONLY,
+    allowNull: false
   },
   dni: {
     type: DataTypes.INTEGER,
@@ -39,19 +39,19 @@ const Inscripcion = sequelize.define('inscripciones', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Nivel,  
-      key: 'id'        
+      model: Nivel,
+      key: 'id'
     },
   },
   id_prepaga: {  
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: Prepaga,  
-      key: 'id'        
+      model: Prepaga,
+      key: 'id'
     },
   },
-   }, {
+}, {
   timestamps: false
 });
 
@@ -61,6 +61,3 @@ Inscripcion.belongsTo(Prepaga, { foreignKey: 'id_prepaga', as: 'prepaga' });
 
 module.exports = Inscripcion;
 
-
-
-						
