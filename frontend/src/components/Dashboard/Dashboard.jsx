@@ -9,8 +9,8 @@ import ContactosCRUD from "../Crud/ContactosCRUD";
 import InscripcionesCRUD from "../Crud/InscripcionesCRUD";
 import imgLogo from "../../assets/images/logoAtad.jpg";
 import "./Dashboard.css";
-import {IoMenu, IoHomeSharp, IoNewspaperSharp, IoCalendarClearSharp, IoPeopleSharp, IoMailOpen } from "react-icons/io5";
-import InscripcionesCRUD from "../Crud/InscripcionesCRUD";
+import {IoMenu, IoHomeSharp, IoNewspaperSharp, IoCalendarClearSharp, IoPeopleSharp, IoMailOpen, IoDocumentText } from "react-icons/io5";
+
 
 
 const Dashboard = () => {
@@ -139,7 +139,10 @@ const Dashboard = () => {
                 <IoMailOpen size={22} className="me-2" color="#2196f3" />
                 {sidebarOpen && "Contactos"}
               </Nav.Link>
-
+              <Nav.Link onClick={() => setSeccionActiva("inscripciones")}>
+                <IoDocumentText size={22} className="me-2" color="#f566cdff" />
+                {sidebarOpen && "Inscripciones"}
+              </Nav.Link>
             </Nav>
 
           </Col>
@@ -177,6 +180,11 @@ const Dashboard = () => {
                 <Nav.Link onClick={() => { setSeccionActiva("contactos"); toggleSidebarMobile(); }}>
                <IoMailOpen size={22} className="me-2" color="#2196f3" />
                 {sidebarOpen && "Contactos"}
+                </Nav.Link>
+
+                <Nav.Link onClick={() => { setSeccionActiva("inscripciones"); toggleSidebarMobile(); }}>
+               <IoDocumentText size={22} className="me-2" color="#f321aaff" />
+                {sidebarOpen && "Inscripciones"}
                 </Nav.Link>
               </Nav>
             </Offcanvas.Body>
