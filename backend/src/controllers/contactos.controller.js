@@ -15,7 +15,7 @@ exports.create = async (req, res) => {
 // Obtener todos los mensajes
 exports.findAll = async (req, res) => {
   try {
-    const contactos = await Contacto.findAll({ order: [['createdAt', 'DESC']] });
+    const contactos = await Contacto.findAll();
     res.json(contactos);
   } catch (error) {
     console.error("Error al obtener contactos:", error);
